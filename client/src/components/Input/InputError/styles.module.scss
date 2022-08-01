@@ -1,0 +1,53 @@
+@use '../../../sassStyles/variables';
+
+.helper-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    svg {
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: 0.25rem !important;
+    }
+
+    &--error {
+        color: variables.$danger;
+    }
+
+    &--success {
+        color: variables.$success;
+    }
+}
+
+.helper-text-password {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    &--error {
+        outline: 2px solid variables.$danger;
+    }
+
+    p:first-child {
+        display: flex;
+        align-items: center;
+        color: variables.$danger;
+    }
+
+    p:not(:first-child) {
+        display: flex;
+        align-items: center;
+        margin: 0.25rem 0;
+        padding-left: 2rem;
+
+        svg {
+            margin-right: 0.5rem;
+            color: variables.$danger;
+        }
+    }
+}

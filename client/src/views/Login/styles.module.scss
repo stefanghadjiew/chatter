@@ -1,0 +1,20 @@
+@use '../../sassStyles/variables';
+@use '../../sassStyles/utility.module';
+@use '../../sassStyles/shared.module';
+
+.login-image {
+    max-width: 550px;
+}
+
+.login-form-container {
+    flex: 1;
+    & p {
+        color: variables.$darkgray;
+        max-width: 30rem;
+    }
+
+    & form {
+        box-shadow: none;
+        padding: 0;
+    }
+}

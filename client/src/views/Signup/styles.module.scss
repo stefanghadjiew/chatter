@@ -1,0 +1,25 @@
+@use '../../sassStyles/shared.module';
+@use '../../sassStyles/utility.module';
+
+.phone-image {
+    margin-left: 5rem;
+    max-width: 30rem;
+}
+
+.bird-image {
+    position: absolute;
+    right: 5rem;
+    bottom: 3rem;
+    max-width: 20rem;
+}
+
+.btn-redirect {
+    height: 100%;
+    margin-left: 1rem;
+}
+
+.redirect-content {
+    position: absolute;
+    top: 3.5rem;
+    right: 5rem;
+}

@@ -1,0 +1,74 @@
+@use '../../sassStyles/variables';
+
+/* .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; */
+
+.button {
+    min-width: 150px;
+    color: variables.$white;
+    letter-spacing: 1.5px;
+    text-transform: capitalize;
+    font-size: variables.$pfont;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: 2.5px 3px 3px 2px variables.$boxShadow;
+    transition: outline 0.2s ease-in-out, outline-offset 0.2s ease-in-out,
+        transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        outline-offset: 5px;
+        transform: scale(0.95);
+    }
+
+    &:active {
+        box-shadow: 1.25px 1.5px 1.5px 1px variables.$boxShadow;
+        transform: scale(0.93);
+    }
+
+    &--primary {
+        background-color: variables.$primary;
+        &:hover {
+            outline: 2px solid variables.$primary;
+        }
+    }
+    &--success {
+        background-color: variables.$success;
+        &:hover {
+            outline: 2px solid variables.$success;
+        }
+    }
+    &--warning {
+        background-color: variables.$warning;
+        &:hover {
+            outline: 2px solid variables.$warning;
+        }
+    }
+    &--danger {
+        background-color: variables.$danger;
+        &:hover {
+            outline: 2px solid variables.$danger;
+        }
+    }
+
+    &--small {
+        min-width: 100px;
+        padding: 0.5rem 1rem;
+    }
+    &--medium {
+        min-width: 150px;
+        padding: 1rem 2rem;
+    }
+    &--large {
+        min-width: 200px;
+        padding: 1.5rem 2rem;
+    }
+
+    &--filled {
+    }
+}
+/* } */

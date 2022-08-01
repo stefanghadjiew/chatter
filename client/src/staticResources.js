@@ -1,0 +1,27 @@
+export const terms = `<p>By selecting Create account, you agree to our <span>Terms</span> and have read and acknowledge our <span>Global Privacy Statement</span></p>`;
+export const loginMsg =
+    'To keep connected with us please login with your personal information by email address and password 🔔';
+export const buttons = {
+    createAccount: 'Create Account',
+    login: 'Login',
+    google: 'Google',
+};
+
+export const headings = {
+    welcomeBack: 'Welcome back :)',
+};
+
+export const labels = {
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    nickname: 'Nickname',
+    email: 'Email',
+    password: 'Password',
+};
+
+export const paragraphs = {
+    haveAnAccount: 'Already have an account ?',
+    forgotPassword: 'Forgot password ?',
+    rememberMe: 'Remember me ',
+    joinWith: 'Or you can join with',
+};

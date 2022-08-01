@@ -1,0 +1,37 @@
+@use '../../sassStyles/variables';
+
+.svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        margin: 0 0.5rem 0 0;
+    }
+}
+
+.error {
+    svg {
+        color: variables.$danger;
+    }
+}
+
+.success {
+    svg {
+        color: variables.$success;
+    }
+}
+
+.warning {
+    svg {
+        color: variables.$warning;
+    }
+}
+
+.info {
+    svg {
+        color: variables.$primary;
+    }
+}

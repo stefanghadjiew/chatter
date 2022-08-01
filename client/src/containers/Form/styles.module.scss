@@ -1,0 +1,13 @@
+@use '../../sassStyles/variables';
+
+.terms-of-use {
+    margin-top: 1rem;
+
+    & p {
+        color: variables.$darkgray;
+        & span {
+            color: variables.$primary;
+            cursor: pointer;
+        }
+    }
+}

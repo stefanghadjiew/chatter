@@ -1,0 +1,64 @@
+@use '../sassStyles/variables';
+
+.svg {
+    width: 24px;
+    height: 24px;
+    color: variables.$danger;
+}
+
+.svg--error {
+    color: variables.$danger;
+}
+
+.svg--success {
+    color: green;
+}
+
+.svg--warning {
+}
+
+.svg--primary {
+}
+
+input {
+    &::placeholder {
+        color: variables.$darkgray;
+    }
+
+    /* &:focus {
+
+    } */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    padding: 2rem;
+    /* outline: 2px solid variables.$grey; */
+    flex-grow: 1;
+    box-shadow: 10px 12px 12px 15px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: variables.$pfont;
+}
+a {
+    text-decoration: none;
+    p {
+        color: variables.$primary;
+    }
+}
+
+h1 {
+    font-weight: bolder;
+    font-size: 2.5rem;
+    color: variables.$primary;
+    letter-spacing: 2px;
+    /* margin-bottom: 0.5rem; */
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}

@@ -1,0 +1,25 @@
+@use '../../sassStyles/variables';
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    outline: 1px solid variables.$grey;
+    transition: outline 0.1s ease-in-out;
+
+    &--error {
+        border: 0;
+        outline: 2px solid variables.$danger;
+    }
+
+    &--success {
+        border: 0;
+        outline: 2px solid variables.$success;
+    }
+}
