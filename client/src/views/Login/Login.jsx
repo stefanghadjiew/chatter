@@ -3,9 +3,9 @@ import { Page, FlexContainer, Form } from 'containers';
 import { Image, Input, H1, Paragraph, Button } from 'components';
 import { Link } from 'react-router-dom';
 import classes from './styles.module.scss';
-import login from '../../assets/login.svg';
 import { useInput } from 'customHooks';
 import { loginMsg } from 'staticResources';
+import { images } from 'assets';
 
 export const Login = () => {
     const email = useInput('');
@@ -15,7 +15,7 @@ export const Login = () => {
         <Page title="Chatter">
             <FlexContainer componentClasses={classes['m-t-3']}>
                 <Image
-                    src={login}
+                    src={images.login}
                     alt="login-image"
                     componentClasses={[
                         classes['login-image'],
