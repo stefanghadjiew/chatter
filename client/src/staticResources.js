@@ -20,8 +20,47 @@ export const labels = {
 };
 
 export const paragraphs = {
+    beautiful: 'beautiful',
+    secure: 'secure',
+    fun: 'fun',
     haveAnAccount: 'Already have an account ?',
     forgotPassword: 'Forgot password ?',
     rememberMe: 'Remember me ',
     joinWith: 'Or you can join with',
 };
+
+export const animationTypes = {
+    topToBottom: 'top-bottom',
+    bottomToTop: 'bottom-top',
+    leftToRight: 'left-right',
+    rightToLeft: 'right-left',
+    insideOut: 'inside-out',
+};
+
+export const animations = duration => ({
+    'top-bottom': {},
+    'bottom-top': {
+        initial: { opacity: 0, y: '25px' },
+        animate: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                ease: 'easeInOut',
+                duration,
+            },
+        },
+    },
+    'left-right': {},
+    'right-left': {},
+    'inside-out': {
+        initial: { opacity: 0, scale: 0.95 },
+        animate: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                ease: 'easeInOut',
+                duration,
+            },
+        },
+    },
+});

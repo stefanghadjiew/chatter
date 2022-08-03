@@ -25,24 +25,31 @@ input {
         color: variables.$darkgray;
     }
 
-    /* &:focus {
+    &:not(:focus) {
+        transition: transform 0.3s ease-in-out;
+    }
 
-    } */
+    &:focus {
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.025);
+    }
 }
 
 form {
     display: flex;
     flex-direction: column;
     max-width: 30rem;
-    padding: 2rem;
+    /* padding: 2rem; */
+    height: fit-content;
     /* outline: 2px solid variables.$grey; */
-    flex-grow: 1;
-    box-shadow: 10px 12px 12px 15px rgba(0, 0, 0, 0.2);
+    /* flex-grow: 1; */
+    /* box-shadow: 10px 12px 12px 15px rgba(0, 0, 0, 0.2); */
 }
 
 p {
     font-size: variables.$pfont;
 }
+
 a {
     text-decoration: none;
     p {

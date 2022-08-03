@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { siteMap } from 'Router';
 import { terms } from 'staticResources';
 import { assignClasses } from 'utils';
+import { FramerMotionAnimation } from 'components';
+import { animationTypes } from 'staticResources';
 
 export const Form = ({
     children,
@@ -19,10 +21,15 @@ export const Form = ({
         <form className={assignClasses(componentClasses)}>
             {children}
             {isSignup && (
-                <div
-                    className={classes['terms-of-use']}
-                    dangerouslySetInnerHTML={{ __html: terms }}
-                />
+                <FramerMotionAnimation
+                    animation={animationTypes.bottomToTop}
+                    animationDuration={1.2}
+                >
+                    <div
+                        className={classes['terms-of-use']}
+                        dangerouslySetInnerHTML={{ __html: terms }}
+                    />
+                </FramerMotionAnimation>
             )}
         </form>
     );

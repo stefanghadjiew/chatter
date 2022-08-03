@@ -10,7 +10,11 @@ export const Page = ({ title, children, titleIcon }) => {
     return (
         <div className={classes['page-wrapper']}>
             <header>
-                <H1 text={title} icon={titleIcon} />
+                <H1
+                    text={title}
+                    icon={titleIcon}
+                    componentClasses={classes['chatter-logo']}
+                />
             </header>
             <main>{children}</main>
             <footer></footer>
