@@ -1,3 +1,11 @@
-export * as birdChat from './chickenChat.svg';
-export * as phoneChat from './phoneChat.svg';
-export * as login from './login.svg';
+import birdChat from './chickenChat.svg';
+import phoneChat from './phoneChat.svg';
+import login from './login.svg';
+import signup from './signup.svg';
+
+export const images = {
+    birdChat,
+    phoneChat,
+    login,
+    signup,
+};

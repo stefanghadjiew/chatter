@@ -3,10 +3,10 @@ import classes from './styles.module.scss';
 import { Input, Image, Button, Svg, Paragraph } from 'components';
 import { useInput } from 'customHooks';
 import { Form, Page, FlexContainer } from 'containers';
-import birdChat from '../../assets/chickenChat.svg';
 import { Link } from 'react-router-dom';
 import { BsFillChatRightTextFill } from 'react-icons/bs';
 import { AiOutlineSmile, AiFillLock } from 'react-icons/ai';
+import { images } from 'assets';
 
 export const Signup = () => {
     const firstName = useInput('');
@@ -17,7 +17,7 @@ export const Signup = () => {
 
     return (
         <Page title="Chatter">
-            <FlexContainer>
+            <FlexContainer componentClasses={classes['m-t-1']}>
                 <FlexContainer componentClasses={classes['m-r-1']}>
                     <Svg icon={<BsFillChatRightTextFill />} />
                     <Paragraph text="beautiful" />
@@ -104,9 +104,9 @@ export const Signup = () => {
             </FlexContainer>
 
             <Image
-                src={birdChat}
+                src={images.signup}
                 alt="bird-chat"
-                componentClasses={classes['bird-image']}
+                componentClasses={classes['signup-image']}
             />
         </Page>
     );
