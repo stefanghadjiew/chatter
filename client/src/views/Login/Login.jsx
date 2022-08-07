@@ -13,6 +13,7 @@ import classes from './styles.module.scss';
 import { useInput } from 'customHooks';
 import { loginMsg, animationTypes } from 'staticResources';
 import { images } from 'assets';
+import { siteMap } from 'Router';
 
 export const Login = () => {
     const email = useInput('');
@@ -94,7 +95,7 @@ export const Login = () => {
                                             }
                                         />
                                     </Link>
-                                    <Link to="/signup">
+                                    <Link to={siteMap.Signup.path}>
                                         <Button text="Create Account" />
                                     </Link>
                                 </FlexContainer>

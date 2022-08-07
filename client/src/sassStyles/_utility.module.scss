@@ -1,3 +1,7 @@
+.p-small {
+    padding: 0.5rem;
+}
+
 .p-2 {
     padding: 2rem;
 }
@@ -56,4 +60,16 @@
 
 .m-l-1 {
     margin-left: 1rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-align-center {
+    align-items: center;
 }

@@ -1,0 +1,20 @@
+@use '../../sassStyles/variables';
+
+.icon-button {
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background: 0;
+
+    padding: 0.5rem;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+        background-color: variables.$darkPrimary;
+    }
+    svg {
+        color: variables.$white;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}

@@ -20,6 +20,7 @@ import {
     labels,
     paragraphs,
 } from 'staticResources';
+import { siteMap } from 'Router';
 
 export const Signup = () => {
     const firstName = useInput('');
@@ -128,7 +129,7 @@ export const Signup = () => {
                             <Paragraph text={paragraphs.forgotPassword} />
                         </Link>
                     </FlexContainer>
-                    <Link to="/login">
+                    <Link to={siteMap.Login.path}>
                         <Button
                             size="small"
                             text={buttons.login}
