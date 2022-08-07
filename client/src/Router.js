@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Signup, Login } from 'views';
+import { Signup, Login, Chat } from 'views';
 
 export const siteMap = {
     HomePage: {
@@ -17,7 +17,7 @@ export const siteMap = {
     },
     Chat: {
         path: '/chat',
-        component: null,
+        component: <Chat />,
     },
     Error: {
         component: null,

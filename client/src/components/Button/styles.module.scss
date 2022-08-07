@@ -1,15 +1,9 @@
 @use '../../sassStyles/variables';
 
-/* .button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; */
-
 .button {
     min-width: 150px;
     color: variables.$white;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: capitalize;
     font-size: variables.$pfont;
     border: 0;
@@ -71,4 +65,3 @@
     &--filled {
     }
 }
-/* } */

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './styles.module.scss';
 import { InputError } from './InputError/InputError';
+import { assignClasses } from 'utils';
 
 export const Input = ({
     value,
@@ -10,12 +11,21 @@ export const Input = ({
     error,
     success,
     removeValidation,
+    removeLabel = false,
+    componentClasses,
 }) => {
     return (
-        <div className={classes['input-wrapper']}>
-            <label className={classes['label']} htmlFor="name">
-                {label}
-            </label>
+        <div
+            className={[
+                classes['input-wrapper'],
+                assignClasses(componentClasses),
+            ].join(' ')}
+        >
+            {!removeLabel && (
+                <label className={classes['label']} htmlFor="name">
+                    {label}
+                </label>
+            )}
             <input
                 placeholder={label || 'Type in here...'}
                 className={[

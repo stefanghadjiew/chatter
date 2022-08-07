@@ -61,11 +61,13 @@ h1 {
     font-weight: bolder;
     font-size: 2.5rem;
     color: variables.$primary;
-    letter-spacing: 2px;
-    /* margin-bottom: 0.5rem; */
 }
 
 label {
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
+}
+
+ul {
+    list-style-type: none;
 }
