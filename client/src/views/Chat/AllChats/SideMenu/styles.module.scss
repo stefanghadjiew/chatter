@@ -1,0 +1,58 @@
+@use '../../../../sassStyles/variables';
+@use '../../../../sassStyles/utility.module';
+
+.side-menu-wrapper {
+    width: 250px;
+}
+
+.side-menu {
+    width: 250px;
+    height: 100%;
+    background-color: variables.$primary;
+
+    .avatar {
+        margin: 0.5rem 1rem;
+    }
+
+    &__item {
+        padding: 0.5rem 1rem;
+        color: variables.$white;
+        cursor: pointer;
+
+        &:hover {
+            background-color: variables.$darkPrimary;
+        }
+    }
+}
+
+.icon-wrapper {
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: red;
+    margin-right: 1rem;
+}
+
+.new-group {
+    background-color: variables.$blue;
+}
+
+.new-channel {
+    background-color: variables.$warning;
+}
+
+.contacts {
+}
+
+.calls {
+}
+
+.saved-message {
+}
+
+.settings {
+}
+
+.night-mode {
+}

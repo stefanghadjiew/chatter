@@ -38,7 +38,15 @@ export const animationTypes = {
 };
 
 export const animations = duration => ({
-    'top-bottom': {},
+    'top-bottom': {
+        initial: { opacity: 0, height: 0 },
+        animate: {
+            opacity: 1,
+            height: 'auto',
+            transition: { duration },
+        },
+        exit: { opacity: 0, height: 0, transition: { duration } },
+    },
     'bottom-top': {
         initial: { opacity: 0, y: '25px' },
         animate: {
@@ -51,7 +59,15 @@ export const animations = duration => ({
         },
     },
     'left-right': {},
-    'right-left': {},
+    'right-left': {
+        initial: { x: '-250px' },
+        animate: {
+            x: 0,
+
+            transition: { ease: 'easeInOut', duration },
+        },
+        exit: { x: '-250px', transition: { duration } },
+    },
     'inside-out': {
         initial: { opacity: 0, scale: 0.95 },
         animate: {

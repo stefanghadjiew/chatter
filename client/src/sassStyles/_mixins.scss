@@ -24,3 +24,8 @@
     pointer-events: none;
     opacity: 0.6;
 }
+
+//this should be a utility class -> just testing to see how to use mixins
+@mixin full-container-height {
+    height: 100%;
+}
