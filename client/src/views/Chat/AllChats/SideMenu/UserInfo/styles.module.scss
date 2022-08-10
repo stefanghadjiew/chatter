@@ -1,0 +1,52 @@
+@use '../../../../../sassStyles/utility.module';
+@use '../../../../../sassStyles/variables';
+
+.wrapper {
+    border-bottom: 1px solid variables.$white;
+    padding: 0.5rem 1rem;
+}
+
+.icon {
+    height: 18px;
+    width: 18px;
+    color: variables.$darkgray;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.icon--rotate {
+    transform: rotate(180deg);
+}
+
+.user-name {
+    color: variables.$white;
+    font-weight: bold;
+}
+
+.user-phone {
+    color: variables.$darkgray;
+}
+
+.add-account {
+    cursor: pointer;
+    border-bottom: 1px solid variables.$white;
+    padding: 0.5rem 1rem;
+
+    color: variables.$white;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: variables.$darkPrimary;
+    }
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    svg {
+        height: 24px;
+        width: 24px;
+        color: variables.$blue;
+    }
+}

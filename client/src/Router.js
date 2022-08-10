@@ -24,7 +24,7 @@ export const siteMap = {
     },
 };
 
-export const AppRoutes = () => {
+export const AppRoutes = ({ setOpenBackdropPortal }) => {
     return (
         <Routes>
             <Route
@@ -43,7 +43,11 @@ export const AppRoutes = () => {
             <Route
                 exact
                 path={siteMap.Chat.path}
-                element={siteMap.Chat.component}
+                element={
+                    /* siteMap.Chat.component */ <Chat
+                        setOpenBackdropPortal={setOpenBackdropPortal}
+                    />
+                }
             />
             <Route element={siteMap.Error.component} />
         </Routes>

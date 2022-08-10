@@ -1,0 +1,5 @@
+@use '../../sassStyles/mixins';
+
+.framer-motion {
+    @include mixins.full-container-height;
+}

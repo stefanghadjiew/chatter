@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import classes from './styles.module.scss';
 import { Link } from 'react-router-dom';
 import { Avatar, Paragraph, IconButton, Input } from 'components';
@@ -7,54 +7,68 @@ import { FlexContainer } from 'containers';
 import { MdPeopleAlt } from 'react-icons/md'; // -> if the chat is a channel
 import { IoMdMenu } from 'react-icons/io';
 
-export const AllChats = () => {
+export const AllChats = ({ setOpenBackdropPortal }) => {
     const [selectedIndex, setSelectedIndex] = useState(null);
-    const data = ['Chat-channel-1', 'Chat-channel-2', 'Chat-channel-3'];
 
-    const renderChatChannels = data.map((item, index) => (
-        <Link to="#" className={classes['nav__link']} key={item + index}>
-            <li
-                className={[
-                    classes['nav__item'],
-                    selectedIndex === index &&
-                        classes['nav__item--active'],
-                ].join(' ')}
-                onClick={() => setSelectedIndex(index)}
+    const renderChatChannels = useMemo(() => {
+        const data = [
+            'Chat-channel-1',
+            'Chat-channel-2',
+            'Chat-channel-3',
+        ];
+        return data.map((item, index) => (
+            <Link
+                to="#"
+                className={classes['nav__link']}
+                key={item + index}
             >
-                <Avatar imgSrc={images.birdChat} />
-                <FlexContainer
-                    flexColumn={true}
-                    componentClasses={[
-                        classes['m-l-1'],
-                        classes['flex-1'],
-                    ]}
+                <li
+                    className={[
+                        classes['nav__item'],
+                        selectedIndex === index &&
+                            classes['nav__item--active'],
+                    ].join(' ')}
+                    onClick={() => setSelectedIndex(index)}
                 >
+                    <Avatar imgSrc={images.birdChat} />
                     <FlexContainer
+                        flexColumn={true}
                         componentClasses={[
-                            classes['channel-name__container'],
-                            classes['flex-space-between'],
+                            classes['m-l-1'],
+                            classes['flex-1'],
                         ]}
                     >
                         <FlexContainer
-                            componentClasses={classes['flex-align-center']}
+                            componentClasses={[
+                                classes['channel-name__container'],
+                                classes['flex-space-between'],
+                            ]}
                         >
-                            {index === 1 && <MdPeopleAlt />}
-                            <Paragraph
-                                text={item}
-                                componentClasses={classes['channel-name']}
-                            />
+                            <FlexContainer
+                                componentClasses={
+                                    classes['flex-align-center']
+                                }
+                            >
+                                {index === 1 && <MdPeopleAlt />}
+                                <Paragraph
+                                    text={item}
+                                    componentClasses={
+                                        classes['channel-name']
+                                    }
+                                />
+                            </FlexContainer>
+                            <Paragraph text="10:51 PM" />
                         </FlexContainer>
-                        <Paragraph text="10:51 PM" />
-                    </FlexContainer>
 
-                    <Paragraph
-                        text="Person : last typed"
-                        componentClasses={classes['last-message']}
-                    />
-                </FlexContainer>
-            </li>
-        </Link>
-    ));
+                        <Paragraph
+                            text="Person : last typed"
+                            componentClasses={classes['last-message']}
+                        />
+                    </FlexContainer>
+                </li>
+            </Link>
+        ));
+    }, [selectedIndex]);
 
     return (
         <nav className={classes['nav']}>
@@ -64,7 +78,12 @@ export const AllChats = () => {
                     classes['flex-align-center'],
                 ]}
             >
-                <IconButton icon={<IoMdMenu />} />
+                <IconButton
+                    icon={<IoMdMenu />}
+                    onClick={() => {
+                        setOpenBackdropPortal(true);
+                    }}
+                />
                 <Input
                     type="text"
                     label="Search"
