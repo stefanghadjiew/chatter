@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     border-radius: 0.5rem;
-    background-color: red;
+
     margin-right: 1rem;
 }
 
@@ -43,16 +43,21 @@
 }
 
 .contacts {
+    background-color: variables.$danger;
 }
 
 .calls {
+    background-color: variables.$success;
 }
 
-.saved-message {
+.saved-messages {
+    background-color: variables.$blue;
 }
 
 .settings {
+    background-color: variables.$pink;
 }
 
 .night-mode {
+    background-color: variables.$darkPrimary;
 }
