@@ -58,12 +58,18 @@ export const animations = duration => ({
             },
         },
     },
-    'left-right': {},
+    'left-right': {
+        initial: { x: 250 },
+        animate: {
+            x: 0,
+            transition: { ease: 'easeInOut', duration },
+        },
+        exit: { x: 350, transition: { duration } },
+    },
     'right-left': {
         initial: { x: '-250px' },
         animate: {
             x: 0,
-
             transition: { ease: 'easeInOut', duration },
         },
         exit: { x: '-250px', transition: { duration } },

@@ -6,9 +6,16 @@ import { images } from 'assets';
 import { FlexContainer } from 'containers';
 import { MdPeopleAlt } from 'react-icons/md'; // -> if the chat is a channel
 import { IoMdMenu } from 'react-icons/io';
+import { useAppDispatch } from 'app/hooks';
+import {
+    openPortal,
+    addChild,
+} from 'features/backdropPortal/backdropPortalSlice';
+import { SideMenu } from './SideMenu';
 
-export const AllChats = ({ setOpenBackdropPortal }) => {
+export const AllChats = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const dispatch = useAppDispatch();
 
     const renderChatChannels = useMemo(() => {
         const data = [
@@ -81,7 +88,8 @@ export const AllChats = ({ setOpenBackdropPortal }) => {
                 <IconButton
                     icon={<IoMdMenu />}
                     onClick={() => {
-                        setOpenBackdropPortal(true);
+                        dispatch(addChild(<SideMenu />));
+                        dispatch(openPortal());
                     }}
                 />
                 <Input

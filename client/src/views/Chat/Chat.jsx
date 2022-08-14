@@ -4,10 +4,10 @@ import { AllChats } from './AllChats';
 import { CurrentChat } from './CurrentChat';
 import classes from './styles.module.scss';
 
-export const Chat = ({ setOpenBackdropPortal }) => {
+export const Chat = () => {
     return (
         <Page componentClasses={classes['chat-page']}>
-            <AllChats setOpenBackdropPortal={setOpenBackdropPortal} />
+            <AllChats />
             <CurrentChat />
         </Page>
     );

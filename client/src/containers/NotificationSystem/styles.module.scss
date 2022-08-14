@@ -1,0 +1,10 @@
+@use '../../sassStyles/variables';
+
+.notification-system {
+    display: flex;
+    flex-direction: column;
+    bottom: 1rem;
+    right: 1rem;
+    position: fixed;
+    gap: 1rem;
+}
