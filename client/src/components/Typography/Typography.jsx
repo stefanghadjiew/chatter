@@ -23,6 +23,19 @@ export const H2 = ({ text, componentClasses }) => {
     );
 };
 
+export const H4 = ({ text, componentClasses }) => {
+    return (
+        <h4
+            className={[
+                assignClasses(componentClasses),
+                classes['h4'],
+            ].join(' ')}
+        >
+            {text}
+        </h4>
+    );
+};
+
 export const Paragraph = ({ text, componentClasses }) => {
     return (
         <p className={[assignClasses(componentClasses)].join(' ')}>

@@ -1,0 +1,65 @@
+@use '../../../sassStyles/variables';
+@use '../../../sassStyles/mixins';
+
+.message-toast {
+    display: flex;
+    padding: 0.5rem 1rem;
+    background-color: variables.$white;
+    width: 300px;
+    min-height: 60px;
+    border-radius: 0.25rem;
+    box-shadow: 6px 10px 20px 2px black;
+    border-bottom: 4px solid variables.$success;
+    position: relative;
+
+    .icon {
+        @include mixins.flex-align-center;
+        margin-right: 1rem;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    button {
+        position: absolute;
+        top: 0rem;
+        right: 0rem;
+        border: 0;
+        outline: 0;
+        background: 0;
+        padding: 0.25rem;
+        cursor: pointer;
+    }
+
+    &--success {
+        border-bottom: 4px solid variables.$success;
+        h4 {
+            color: variables.$success;
+        }
+        svg {
+            color: variables.$success;
+        }
+    }
+
+    &--info {
+        border-bottom: 4px solid variables.$darkBlue;
+        h4 {
+            color: variables.$darkBlue;
+        }
+        svg {
+            color: variables.$darkBlue;
+        }
+    }
+
+    &--warning {
+        border-bottom: 4px solid variables.$warning;
+        h4 {
+            color: variables.$warning;
+        }
+        svg {
+            color: variables.$warning;
+        }
+    }
+}

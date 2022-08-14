@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 
-export const usePortal = () => {
+export const usePortal = (id, stackingContext) => {
     const [loaded, setLoaded] = useState(false);
-    const [portalId] = useState('backdrop-portal');
+    const [portalId] = useState(`portal-${id}`);
 
     useEffect(() => {
         const div = document.createElement('div');
         div.id = portalId;
-        div.style = 'position: fixed; z-index: 5';
+        div.style = `position: fixed; z-index: ${stackingContext}`;
         document.getElementsByTagName('body')[0].prepend(div);
         setLoaded(true);
         return () => {
             document.getElementsByTagName('body')[0].removeChild(div);
         };
-    }, [portalId]);
+    }, [portalId, stackingContext]);
 
     return [loaded, portalId];
 };

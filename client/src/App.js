@@ -1,22 +1,24 @@
-import { useState } from 'react';
 import { AppRoutes } from './Router';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { BackdropPortal } from 'containers';
-import { SideMenu } from 'views/Chat/AllChats/SideMenu';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { BackdropPortal, NotificationSystem } from 'containers';
+
 import './index.module.scss';
 
 export const App = () => {
-    const [openBackdropPortal, setOpenBackdropPortal] = useState(false);
+    const queryClient = new QueryClient();
 
     return (
         <Router>
-            {/* <Navbar/> */}
-            <AppRoutes setOpenBackdropPortal={setOpenBackdropPortal} />
-            {/* <Footer/> */}
-            <BackdropPortal
-                portalState={{ openBackdropPortal, setOpenBackdropPortal }}
-                component={<SideMenu />}
-            />
+            <QueryClientProvider client={queryClient}>
+                {/* <Navbar/> */}
+                <AppRoutes />
+                {/* <Footer/> */}
+                <BackdropPortal />
+                <NotificationSystem />
+                <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
         </Router>
     );
 };
