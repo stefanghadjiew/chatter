@@ -24,3 +24,18 @@
         outline: 2px solid variables.$success;
     }
 }
+
+.input--hover {
+    &::placeholder {
+        color: variables.$darkgray;
+    }
+
+    &:not(:focus) {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:focus {
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.025);
+    }
+}

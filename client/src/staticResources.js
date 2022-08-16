@@ -17,6 +17,7 @@ export const labels = {
     nickname: 'Nickname',
     email: 'Email',
     password: 'Password',
+    writeAmessage: 'Write a message...',
 };
 
 export const paragraphs = {

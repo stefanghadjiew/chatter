@@ -20,7 +20,7 @@
 .svg--primary {
 }
 
-input {
+/* input {
     &::placeholder {
         color: variables.$darkgray;
     }
@@ -33,7 +33,7 @@ input {
         transition: all 0.3s ease-in-out;
         transform: scale(1.025);
     }
-}
+} */
 
 form {
     display: flex;

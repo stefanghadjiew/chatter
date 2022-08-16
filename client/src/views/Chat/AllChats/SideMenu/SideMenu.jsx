@@ -57,9 +57,7 @@ export const SideMenu = () => {
 
         return menuItems.map((item, index) => (
             <li key={item + index} className={classes['side-menu__item']}>
-                <FlexContainer
-                    componentClasses={classes['flex-align-center']}
-                >
+                <FlexContainer alignItems="center">
                     <figure
                         className={`${classes['icon-wrapper']} ${
                             classes[item.bgClass]
@@ -81,7 +79,7 @@ export const SideMenu = () => {
             componentClasses={classes['side-menu-wrapper']}
         >
             <nav className={classes['side-menu']}>
-                <FlexContainer flexColumn={true}>
+                <FlexContainer flexDirection="column">
                     <Avatar
                         imgSrc={images.birdChat}
                         componentClasses={classes['avatar']}

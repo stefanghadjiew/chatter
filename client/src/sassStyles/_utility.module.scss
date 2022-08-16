@@ -1,3 +1,5 @@
+// SPACINGS
+
 .p-small {
     padding: 0.5rem;
 }
@@ -82,14 +84,73 @@
     margin-top: 0.5rem;
 }
 
-.flex-1 {
-    flex: 1;
+// CONTAINERS
+
+.flex-justify-space-between {
+    justify-content: space-between;
 }
 
-.flex-space-between {
-    justify-content: space-between;
+.flex-justify-space-around {
+    justify-content: space-around;
+}
+
+.flex-justify-space-evenly {
+    justify-content: space-evenly;
+}
+
+.flex-justify-start {
+    justify-content: start;
+}
+
+.flex-justify-end {
+    justify-content: end;
+}
+
+.flex-justify-start {
+    justify-content: flex-start;
+}
+
+.flex-justify-end {
+    justify-content: flex-end;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-direction-col {
+    flex-direction: column;
+}
+
+.flex-centered {
+    justify-content: center;
+    align-items: center;
 }
 
 .flex-align-center {
     align-items: center;
+}
+
+.flex-align-flex-start {
+    align-items: flex-start;
+}
+
+.flex-align-flex-end {
+    align-items: flex-end;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex {
+    display: flex;
+}
+
+.fit-content {
+    height: fit-content;
 }

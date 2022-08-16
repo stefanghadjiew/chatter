@@ -39,7 +39,7 @@ export const AllChats = () => {
                 >
                     <Avatar imgSrc={images.birdChat} />
                     <FlexContainer
-                        flexColumn={true}
+                        flexDirection="column"
                         componentClasses={[
                             classes['m-l-1'],
                             classes['flex-1'],
@@ -48,14 +48,10 @@ export const AllChats = () => {
                         <FlexContainer
                             componentClasses={[
                                 classes['channel-name__container'],
-                                classes['flex-space-between'],
                             ]}
+                            justifyContent="space-between"
                         >
-                            <FlexContainer
-                                componentClasses={
-                                    classes['flex-align-center']
-                                }
-                            >
+                            <FlexContainer alignItems="center">
                                 {index === 1 && <MdPeopleAlt />}
                                 <Paragraph
                                     text={item}
@@ -80,10 +76,8 @@ export const AllChats = () => {
     return (
         <nav className={classes['nav']}>
             <FlexContainer
-                componentClasses={[
-                    classes['p-small'],
-                    classes['flex-align-center'],
-                ]}
+                alignItems="center"
+                componentClasses={[classes['p-small']]}
             >
                 <IconButton
                     icon={<IoMdMenu />}
