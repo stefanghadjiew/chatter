@@ -36,13 +36,16 @@ export const Login = () => {
                     />
                 </FramerMotionAnimation>
                 <FlexContainer
-                    flexColumn={true}
+                    flexDirection="column"
                     componentClasses={classes['login-form-container']}
                     /* centered={true} */
                 >
                     <Fragment>
                         <FramerMotionAnimation
                             animation={animationTypes.bottomToTop}
+                            componentClasses={
+                                classes['framer-animation-h1']
+                            }
                         >
                             <H1
                                 text="Welcome Back :)"
@@ -72,11 +75,11 @@ export const Login = () => {
                                     onChange={password.handleChange}
                                 />
                                 <FlexContainer
+                                    justifyContent="space-between"
                                     componentClasses={[
                                         classes['m-b-1'],
                                         classes['m-r-1'],
                                         classes['m-l-1'],
-                                        classes['flex-between'],
                                     ]}
                                 >
                                     <Link to="/">

@@ -1,26 +1,63 @@
 import React from 'react';
-import sharedClasses from '../../sassStyles/_shared.module.scss';
+import utilityClasses from '../../sassStyles/_utility.module.scss';
 import { assignClasses } from 'utils';
 
 export const FlexContainer = ({
     children,
-    flexColumn = false,
-    centered = false,
     componentClasses,
-    justifyContentEnd = false,
+    justifyContent,
+    alignItems,
+    flexDirection,
+    centered,
 }) => {
-    const assignFlexColumn = flexColumn ? sharedClasses['flex-col'] : '';
-    const assignCentered = centered ? sharedClasses['flex-center'] : '';
-    const assignJustifyContent = justifyContentEnd
-        ? sharedClasses['flex-end']
+    const CONTAINER_CLASSES = {
+        justifyContent: [
+            'start',
+            'end',
+            'flex-start',
+            'flex-end',
+            'center',
+            'space-around',
+            'space-between',
+            'space-evenly',
+        ],
+        alignItems: ['flex-start', 'flex-end', 'center'],
+        flexDirection: ['column', 'column-reverse', 'row-reverse'],
+        centered: ['flex-center'],
+    };
+
+    const assignJustifyContent = CONTAINER_CLASSES.justifyContent.includes(
+        justifyContent
+    )
+        ? utilityClasses[`flex-justify-${justifyContent}`]
         : '';
+    const assignAlignItems = CONTAINER_CLASSES.alignItems.includes(
+        alignItems
+    )
+        ? utilityClasses[`flex-align-${alignItems}`]
+        : '';
+    const assignFlexDirection = CONTAINER_CLASSES.flexDirection.includes(
+        flexDirection
+    )
+        ? utilityClasses[`flex-${flexDirection}`]
+        : '';
+    const assignCentered = CONTAINER_CLASSES.centered.includes(centered)
+        ? utilityClasses[`flex-align-${centered}`]
+        : '';
+
+    console.log(assignJustifyContent);
+    console.log(assignAlignItems);
+    console.log(assignFlexDirection);
+    console.log(assignCentered);
 
     return (
         <div
             className={[
                 assignClasses(componentClasses),
-                sharedClasses['flex'],
-                assignFlexColumn,
+                utilityClasses['flex'],
+                assignFlexDirection,
+                assignAlignItems,
+                /* assignFlexColumn, */
                 assignCentered,
                 assignJustifyContent,
             ].join(' ')}

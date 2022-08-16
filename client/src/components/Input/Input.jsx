@@ -13,6 +13,8 @@ export const Input = ({
     removeValidation,
     removeLabel = false,
     componentClasses,
+    componentInputClasses,
+    removeHoverEffect = false,
 }) => {
     return (
         <div
@@ -34,6 +36,8 @@ export const Input = ({
                         success &&
                         classes['input--success'],
                     classes['input'],
+                    !removeHoverEffect && classes['input--hover'],
+                    assignClasses(componentInputClasses),
                 ].join(' ')}
                 value={value}
                 onChange={onChange}

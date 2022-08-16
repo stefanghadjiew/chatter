@@ -46,19 +46,15 @@ export const Signup = () => {
                 </FlexContainer>
             </FlexContainer>
             <FlexContainer
-                componentClasses={[
-                    classes['flex-between'],
-                    classes['m-t-5'],
-                ]}
+                justifyContent="space-between"
+                componentClasses={[classes['m-t-5']]}
             >
                 <Form>
                     <FramerMotionAnimation
                         animation={animationTypes.bottomToTop}
                         animationDuration={0.3}
                     >
-                        <FlexContainer
-                            componentClasses={classes['flex-between']}
-                        >
+                        <FlexContainer justifyContent="space-between">
                             <Input
                                 type="text"
                                 label={labels.firstName}
@@ -123,7 +119,7 @@ export const Signup = () => {
                         classes['redirect-content'],
                     ]}
                 >
-                    <FlexContainer flexColumn={true}>
+                    <FlexContainer flexDirection="column">
                         <Paragraph text={paragraphs.haveAnAccount} />
                         <Link to="/">
                             <Paragraph text={paragraphs.forgotPassword} />

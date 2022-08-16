@@ -32,7 +32,7 @@ export const NotificationSystem = () => {
         ? ReactDOM.createPortal(
               <div className={classes['notification-system']}>
                   <AnimatePresence>{renderMessages}</AnimatePresence>
-                  <Button
+                  {/*  <Button
                       text="Add Toast"
                       onClick={() =>
                           dispatch(
@@ -42,7 +42,7 @@ export const NotificationSystem = () => {
                               })
                           )
                       }
-                  />
+                  /> */}
               </div>,
               document.getElementById(portalId)
           )

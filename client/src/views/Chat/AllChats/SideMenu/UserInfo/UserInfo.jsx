@@ -10,17 +10,17 @@ export const UserInfo = ({ userName, userPhone }) => {
     const [isAddAccountOpen, setIsAddAccountOpen] = useState(false);
 
     return (
-        <FlexContainer flexColumn={true}>
+        <FlexContainer flexDirection="column">
             <FlexContainer
+                alignItems="center"
+                justifyContent="space-between"
                 componentClasses={[
                     classes['wrapper'],
-                    classes['flex-align-center'],
-                    classes['flex-space-between'],
                     classes['p-t-small'],
                     classes['p-b-small'],
                 ]}
             >
-                <FlexContainer flexColumn={true}>
+                <FlexContainer flexDirection="column">
                     <Paragraph
                         text={userName}
                         componentClasses={classes['user-name']}
@@ -48,10 +48,8 @@ export const UserInfo = ({ userName, userPhone }) => {
                         animationDuration={0.2}
                     >
                         <FlexContainer
-                            componentClasses={[
-                                classes['add-account'],
-                                classes['flex-align-center'],
-                            ]}
+                            alignItems="center"
+                            componentClasses={[classes['add-account']]}
                         >
                             <figure className={classes['icon-wrapper']}>
                                 <IoIosAddCircle />
