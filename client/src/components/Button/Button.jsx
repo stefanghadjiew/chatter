@@ -11,7 +11,13 @@ export const Button = ({
     componentClasses,
     variant = 'filled',
 }) => {
-    const BUTTON_COLORS = ['primary', 'warning', 'danger', 'success'];
+    const BUTTON_COLORS = [
+        'primary',
+        'warning',
+        'danger',
+        'success',
+        'dark-primary',
+    ];
 
     const BUTTON_SIZES = ['small', 'medium', 'large'];
 

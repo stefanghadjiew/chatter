@@ -14,14 +14,22 @@ import { FaSave } from 'react-icons/fa';
 import { IoMdSettings } from 'react-icons/io';
 import { UserInfo } from './UserInfo';
 import { animationTypes } from 'staticResources';
+import { useAppDispatch } from 'app/hooks';
+import { addChild } from 'features/backdropPortal/backdropPortalSlice';
+import { NewGroupChat } from 'views/Chat/NewGroupChat';
 
 export const SideMenu = () => {
+    const dispatch = useAppDispatch();
+
     const renderSideMenuItems = useMemo(() => {
         const menuItems = [
             {
                 title: 'New Group',
                 icon: <MdGroup />,
                 bgClass: 'new-group',
+                onClick: () => {
+                    dispatch(addChild(<NewGroupChat />));
+                },
             },
             {
                 title: 'New Channel',
@@ -56,7 +64,11 @@ export const SideMenu = () => {
         ];
 
         return menuItems.map((item, index) => (
-            <li key={item + index} className={classes['side-menu__item']}>
+            <li
+                key={item + index}
+                className={classes['side-menu__item']}
+                onClick={item.onClick}
+            >
                 <FlexContainer alignItems="center">
                     <figure
                         className={`${classes['icon-wrapper']} ${
@@ -70,12 +82,13 @@ export const SideMenu = () => {
                 </FlexContainer>
             </li>
         ));
-    }, []);
+    }, [dispatch]);
 
     return (
         <FramerMotionAnimation
             animation={animationTypes.rightToLeft}
             animationDuration={0.2}
+            motionKey="framer-motion-side-menu"
             componentClasses={classes['side-menu-wrapper']}
         >
             <nav className={classes['side-menu']}>

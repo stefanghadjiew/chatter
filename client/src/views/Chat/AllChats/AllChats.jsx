@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import classes from './styles.module.scss';
 import { Link } from 'react-router-dom';
 import { Avatar, Paragraph, IconButton, Input } from 'components';
@@ -17,61 +17,50 @@ export const AllChats = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
     const dispatch = useAppDispatch();
 
-    const renderChatChannels = useMemo(() => {
-        const data = [
-            'Chat-channel-1',
-            'Chat-channel-2',
-            'Chat-channel-3',
-        ];
-        return data.map((item, index) => (
-            <Link
-                to="#"
-                className={classes['nav__link']}
-                key={item + index}
-            >
-                <li
-                    className={[
-                        classes['nav__item'],
-                        selectedIndex === index &&
-                            classes['nav__item--active'],
-                    ].join(' ')}
-                    onClick={() => setSelectedIndex(index)}
-                >
-                    <Avatar imgSrc={images.birdChat} />
-                    <FlexContainer
-                        flexDirection="column"
-                        componentClasses={[
-                            classes['m-l-1'],
-                            classes['flex-1'],
-                        ]}
-                    >
-                        <FlexContainer
-                            componentClasses={[
-                                classes['channel-name__container'],
-                            ]}
-                            justifyContent="space-between"
-                        >
-                            <FlexContainer alignItems="center">
-                                {index === 1 && <MdPeopleAlt />}
-                                <Paragraph
-                                    text={item}
-                                    componentClasses={
-                                        classes['channel-name']
-                                    }
-                                />
-                            </FlexContainer>
-                            <Paragraph text="10:51 PM" />
-                        </FlexContainer>
+    const data = ['Chat-channel-1', 'Chat-channel-2', 'Chat-channel-3'];
 
-                        <Paragraph
-                            text="Person : last typed"
-                            componentClasses={classes['last-message']}
-                        />
+    const renderChatChannels = data.map((item, index) => (
+        <Link to="#" className={classes['nav__link']} key={item + index}>
+            <li
+                className={[
+                    classes['nav__item'],
+                    selectedIndex === index &&
+                        classes['nav__item--active'],
+                ].join(' ')}
+                onClick={() => setSelectedIndex(index)}
+            >
+                <Avatar imgSrc={images.birdChat} />
+                <FlexContainer
+                    flexDirection="column"
+                    componentClasses={[
+                        classes['m-l-1'],
+                        classes['flex-1'],
+                    ]}
+                >
+                    <FlexContainer
+                        componentClasses={[
+                            classes['channel-name__container'],
+                        ]}
+                        justifyContent="space-between"
+                    >
+                        <FlexContainer alignItems="center">
+                            {index === 1 && <MdPeopleAlt />}
+                            <Paragraph
+                                text={item}
+                                componentClasses={classes['channel-name']}
+                            />
+                        </FlexContainer>
+                        <Paragraph text="10:51 PM" />
                     </FlexContainer>
-                </li>
-            </Link>
-        ));
-    }, [selectedIndex]);
+
+                    <Paragraph
+                        text="Person : last typed"
+                        componentClasses={classes['last-message']}
+                    />
+                </FlexContainer>
+            </li>
+        </Link>
+    ));
 
     return (
         <nav className={classes['nav']}>
@@ -88,8 +77,9 @@ export const AllChats = () => {
                 />
                 <Input
                     type="text"
-                    label="Search"
                     removeLabel={true}
+                    placeholder="Search"
+                    removeOutline={true}
                     componentClasses={classes['search']}
                 />
                 {/* <IconButton />

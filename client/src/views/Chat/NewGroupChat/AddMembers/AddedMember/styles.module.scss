@@ -1,0 +1,21 @@
+@use '../../../../../sassStyles/mixins';
+@use '../../../../../sassStyles/variables';
+@use '../../../../../sassStyles/utility.module';
+
+.added-member {
+    border-radius: 2rem;
+    @include mixins.flex-align-center;
+    background-color: variables.$darkPrimary;
+    cursor: pointer;
+
+    &__close-icon {
+        @include mixins.flex-center;
+        width: 35px;
+        height: 35px;
+        background-color: variables.$white;
+
+        &:hover {
+            background-color: variables.$white;
+        }
+    }
+}

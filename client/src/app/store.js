@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '../features/user/userSlice';
+import stepperReducer from '../features/stepper/stepperSlice';
 import backdropPortalReducer from '../features/backdropPortal/backdropPortalSlice';
 import notificationSystemSlice from 'features/notificationSystem/notificationSystemSlice';
 
 export const store = configureStore({
     reducer: {
-        user: userReducer,
+        stepper: stepperReducer,
         backdropPortal: backdropPortalReducer,
         notificationSystem: notificationSystemSlice,
     },

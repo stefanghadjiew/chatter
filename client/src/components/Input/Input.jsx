@@ -8,29 +8,30 @@ export const Input = ({
     placeholder,
     onChange,
     type = 'text',
-    variant,
+    variant = 'filled',
     error,
     success,
     removeValidation,
     removeLabel = false,
     componentClasses,
     componentInputClasses,
+
     removeBorder,
     removeOutline,
 }) => {
     //create logic for removing focus-within
 
-    const INPUT_TYPES = ['filled', 'outlined'];
+    const INPUT_VARIANTS = ['filled', 'outlined'];
 
-    const assignVariant = INPUT_TYPES.includes(variant)
+    const assignVariant = INPUT_VARIANTS.includes(variant)
         ? classes[`input-wrapper--${variant}`]
-        : classes[`input-wrapper--${INPUT_TYPES[0]}`];
+        : classes[`input-wrapper--${INPUT_VARIANTS[0]}`];
 
     const assignErrorClasses =
         !removeValidation && error
             ? classes[
                   `input-wrapper--${
-                      variant ? variant : INPUT_TYPES[0]
+                      variant ? variant : INPUT_VARIANTS[0]
                   }--error`
               ]
             : '';
@@ -39,7 +40,7 @@ export const Input = ({
         !removeValidation && success
             ? classes[
                   `input-wrapper--${
-                      variant ? variant : INPUT_TYPES[0]
+                      variant ? variant : INPUT_VARIANTS[0]
                   }--success`
               ]
             : '';
@@ -54,8 +55,8 @@ export const Input = ({
     return (
         <div
             className={[
-                assignVariant,
                 classes['input-wrapper'],
+                assignVariant,
                 assignErrorClasses,
                 assignSuccessClasses,
                 assignRemoveBorder,
@@ -64,10 +65,10 @@ export const Input = ({
             ].join(' ')}
         >
             <input
-                placeholder={removeLabel ? placeholder : ''}
                 className={[assignClasses(componentInputClasses)].join(
                     ' '
                 )}
+                placeholder={removeLabel ? placeholder : ' '}
                 value={value}
                 onChange={onChange}
                 name="name"

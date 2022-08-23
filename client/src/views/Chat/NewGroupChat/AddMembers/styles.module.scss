@@ -1,0 +1,88 @@
+@use '../../../../sassStyles/variables';
+@use '../../../../sassStyles/utility.module';
+@use '../../../../sassStyles/mixins';
+
+.add-members-container {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: variables.$primary;
+    min-width: 360px;
+
+    &__heading {
+        margin-bottom: 1rem;
+    }
+
+    &__actions {
+        gap: 1rem;
+
+        padding-top: 1rem;
+    }
+
+    h4 {
+        color: variables.$white;
+    }
+
+    p {
+        color: variables.$darkgray;
+    }
+
+    .search-input {
+        input {
+            padding: 0;
+        }
+
+        label {
+            padding: 0;
+            top: 14px;
+        }
+
+        &:focus-within {
+            border-bottom: 2px solid variables.$darkPrimary;
+        }
+
+        &:focus-within label,
+        input:not(:placeholder-shown) ~ label {
+            padding: 0;
+            top: -14px;
+            left: 0;
+            bottom: auto;
+        }
+
+        padding: 0;
+
+        & ~ label {
+            padding: 0.5rem 0;
+        }
+    }
+
+    &__added-users {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        max-width: 320px;
+        max-height: 80px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 2.5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            margin: 0.25rem 0;
+            background-color: variables.$darkPrimary;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: variables.$white;
+            border-radius: 10px;
+        }
+
+        p {
+            @include mixins.flex-center;
+            color: variables.$white;
+            padding: 0 0.25rem;
+            height: 100%;
+        }
+    }
+}
