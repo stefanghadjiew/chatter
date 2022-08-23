@@ -33,7 +33,7 @@ export const UserInfo = ({ userName, userPhone }) => {
                 <IoIosArrowDown
                     onClick={e => {
                         e.stopPropagation();
-                        setIsAddAccountOpen(prev => !prev);
+                        setIsAddAccountOpen(prevState => !prevState);
                     }}
                     className={`${classes['icon']} ${
                         isAddAccountOpen && classes['icon--rotate']

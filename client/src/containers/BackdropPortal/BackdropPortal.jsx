@@ -5,7 +5,7 @@ import { ClickAwayListener } from './ClickAwayListener';
 import { AnimatePresence } from 'framer-motion';
 import { useAppSelector } from 'app/hooks';
 
-export const BackdropPortal = ({ portalState, component }) => {
+export const BackdropPortal = () => {
     const [loaded, portalId] = usePortal('backdrop', 2);
     const { isOpen, childComponent } = useAppSelector(
         state => state.backdropPortal
@@ -14,7 +14,8 @@ export const BackdropPortal = ({ portalState, component }) => {
     return loaded
         ? ReactDOM.createPortal(
               //AnimatePresence in the BackdropPortal will allow every child component in the container to have an exit animation and there is no need to wrap every FramerMotionAnimation component with it
-              <AnimatePresence exitBeforeEnter>
+
+              <AnimatePresence>
                   {isOpen && (
                       <div className={classes['backdrop']}>
                           <ClickAwayListener>
@@ -23,7 +24,6 @@ export const BackdropPortal = ({ portalState, component }) => {
                       </div>
                   )}
               </AnimatePresence>,
-
               document.getElementById(portalId)
           )
         : null;

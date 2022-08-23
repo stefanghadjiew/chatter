@@ -30,6 +30,14 @@
             outline: 2px solid variables.$primary;
         }
     }
+
+    &--dark-primary {
+        background-color: variables.$darkPrimary;
+        /* &:hover {
+            outline: 2px solid variables.$darkPrimary;
+        } */
+    }
+
     &--success {
         background-color: variables.$success;
         &:hover {
@@ -62,6 +70,6 @@
         padding: 1.5rem 2rem;
     }
 
-    &--filled {
-    }
+    /* &--filled {
+    } */
 }

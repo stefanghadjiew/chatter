@@ -1,0 +1,67 @@
+@use '../../../sassStyles/variables';
+@use '../../../sassStyles/mixins';
+@use '../../../sassStyles/utility.module';
+
+.list-container {
+    height: 450px;
+    overflow-y: scroll;
+    border-bottom: 2px solid variables.$darkPrimary;
+    border-top: 2px solid variables.$darkPrimary;
+    padding: 0.5rem 0;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        margin: 0.25rem 0;
+        background-color: variables.$darkPrimary;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: variables.$white;
+        border-radius: 10px;
+    }
+
+    .list {
+        color: variables.$white;
+
+        &__item {
+            position: relative;
+            p:first-child {
+                color: variables.$white;
+                font-weight: bold;
+            }
+            @include mixins.flex-align-center;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+
+            &:hover {
+                background-color: variables.$darkPrimary;
+            }
+            .online {
+                color: variables.$success;
+            }
+
+            &--added {
+                figure {
+                    border: 2px solid variables.$success;
+                }
+
+                &__tick-icon {
+                    width: 20px;
+                    height: 20px;
+                    color: variables.$white;
+                    background-color: variables.$success;
+                    border-radius: 50%;
+                    border: 2px solid variables.$white;
+                    position: absolute;
+                    bottom: 6px;
+                    left: 40px;
+                }
+            }
+        }
+    }
+}

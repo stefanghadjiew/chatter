@@ -3,3 +3,4 @@ export * from './validateInput';
 export * from './validatePassword';
 export * from './validateText';
 export * from './isEmpty';
+export * from './filterUserFriends';

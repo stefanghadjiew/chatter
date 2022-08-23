@@ -1,7 +1,18 @@
 // SPACINGS
+.p-0 {
+    padding: 0;
+}
 
 .p-small {
     padding: 0.5rem;
+}
+
+.p-t-tiny {
+    padding-top: 0.25rem;
+}
+
+.p-b-tiny {
+    padding-bottom: 0.25rem;
 }
 
 .p-t-small {
@@ -84,6 +95,10 @@
     margin-top: 0.5rem;
 }
 
+.text-center {
+    text-align: center;
+}
+
 // CONTAINERS
 
 .flex-justify-space-between {
@@ -145,4 +160,16 @@
 
 .fit-content {
     height: fit-content;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.full-container-height {
+    height: 100%;
+}
+
+.height-auto {
+    height: auto;
 }

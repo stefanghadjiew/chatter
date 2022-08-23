@@ -45,11 +45,6 @@ export const FlexContainer = ({
         ? utilityClasses[`flex-align-${centered}`]
         : '';
 
-    console.log(assignJustifyContent);
-    console.log(assignAlignItems);
-    console.log(assignFlexDirection);
-    console.log(assignCentered);
-
     return (
         <div
             className={[

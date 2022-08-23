@@ -54,7 +54,7 @@ export const Signup = () => {
                         animation={animationTypes.bottomToTop}
                         animationDuration={0.3}
                     >
-                        <FlexContainer justifyContent="space-between">
+                        <FlexContainer flexDirection="column">
                             <Input
                                 type="text"
                                 label={labels.firstName}
