@@ -37,5 +37,5 @@ export const useInput = initialValue => {
         }
     }, [value, error]);
 
-    return { value, error, success, handleChange };
+    return { value, error, success, handleChange, setValue };
 };

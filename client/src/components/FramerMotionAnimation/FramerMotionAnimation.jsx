@@ -1,20 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { animations } from 'staticResources';
+import { animationVariants } from './animationTypes';
 import { assignClasses } from 'utils';
 import classes from './styles.module.scss';
 
 export const FramerMotionAnimation = ({
     children,
-    animation,
+    animationVariant,
     animationDuration,
     motionKey,
     componentClasses,
 }) => {
-    const animationVariants = animations(animationDuration).hasOwnProperty(
-        animation
+    const animation = animationVariants(animationDuration).hasOwnProperty(
+        animationVariant
     )
-        ? animations(animationDuration)[animation]
+        ? animationVariants(animationDuration)[animationVariant]
         : null;
 
     return (
@@ -24,10 +24,10 @@ export const FramerMotionAnimation = ({
                 assignClasses(componentClasses),
                 classes['framer-motion'],
             ].join(' ')}
-            initial={animationVariants.initial}
-            animate={animationVariants.animate}
-            exit={animationVariants.exit}
-            variants={animationVariants}
+            initial={animation.initial}
+            animate={animation.animate}
+            exit={animation.exit}
+            variants={animation}
         >
             {children}
         </motion.div>

@@ -1,0 +1,47 @@
+@use '../../../../../../sassStyles/variables';
+@use '../../../../../../sassStyles/utility.module';
+
+.share-contact {
+    background-color: variables.$primary;
+    width: 350px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    &__search {
+        &:focus-within label {
+            padding: 0;
+            left: 0;
+        }
+
+        input {
+            background: transparent;
+            padding: 0;
+
+            &:focus-within {
+                border-bottom: 2px solid variables.$darkPrimary;
+            }
+        }
+
+        label {
+            padding: 0;
+            top: 14px;
+        }
+
+        p {
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+    }
+
+    &__actions {
+        margin-top: 2rem;
+        justify-content: flex-end;
+        button {
+            background-color: variables.$darkPrimary;
+
+            &:hover {
+                outline: 2px solid variables.$darkPrimary;
+            }
+        }
+    }
+}

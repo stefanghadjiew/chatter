@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { FlexContainer } from 'containers';
-import { Paragraph, FramerMotionAnimation } from 'components';
+import {
+    Paragraph,
+    FramerMotionAnimation,
+    animationTypes,
+} from 'components';
 import classes from './styles.module.scss';
 import { IoIosArrowDown, IoIosAddCircle } from 'react-icons/io';
-import { animationTypes } from 'staticResources';
 import { AnimatePresence } from 'framer-motion';
 
 export const UserInfo = ({ userName, userPhone }) => {
@@ -44,7 +47,7 @@ export const UserInfo = ({ userName, userPhone }) => {
             <AnimatePresence exitBeforeEnter>
                 {isAddAccountOpen && (
                     <FramerMotionAnimation
-                        animation={animationTypes.topToBottom}
+                        animationVariant={animationTypes.topToBottom}
                         animationDuration={0.2}
                     >
                         <FlexContainer

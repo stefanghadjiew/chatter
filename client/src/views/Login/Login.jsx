@@ -7,11 +7,12 @@ import {
     Paragraph,
     Button,
     FramerMotionAnimation,
+    animationTypes,
 } from 'components';
 import { Link } from 'react-router-dom';
 import classes from './styles.module.scss';
 import { useInput } from 'customHooks';
-import { loginMsg, animationTypes } from 'staticResources';
+import { loginMsg } from 'staticResources';
 import { images } from 'assets';
 import { siteMap } from 'Router';
 
@@ -23,7 +24,7 @@ export const Login = () => {
         <Page title="Chatter">
             <FlexContainer componentClasses={classes['m-t-3']}>
                 <FramerMotionAnimation
-                    animation={animationTypes.insideOut}
+                    animationVariant={animationTypes.insideOut}
                     animationDuration={0.3}
                 >
                     <Image
@@ -42,7 +43,7 @@ export const Login = () => {
                 >
                     <Fragment>
                         <FramerMotionAnimation
-                            animation={animationTypes.bottomToTop}
+                            animationVariant={animationTypes.bottomToTop}
                             componentClasses={
                                 classes['framer-animation-h1']
                             }
@@ -55,7 +56,9 @@ export const Login = () => {
                         </FramerMotionAnimation>
                         <Form componentClasses={classes['m-t-2']}>
                             <FramerMotionAnimation
-                                animation={animationTypes.bottomToTop}
+                                animationVariant={
+                                    animationTypes.bottomToTop
+                                }
                                 animationDuration={0.5}
                             >
                                 <Input
@@ -104,7 +107,9 @@ export const Login = () => {
                                 </FlexContainer>
                             </FramerMotionAnimation>
                             <FramerMotionAnimation
-                                animation={animationTypes.bottomToTop}
+                                animationVariant={
+                                    animationTypes.bottomToTop
+                                }
                                 animationDuration={1.2}
                             >
                                 <Paragraph

@@ -7,6 +7,7 @@ import {
     Svg,
     Paragraph,
     FramerMotionAnimation,
+    animationTypes,
 } from 'components';
 import { useInput } from 'customHooks';
 import { Form, Page, FlexContainer } from 'containers';
@@ -14,12 +15,7 @@ import { Link } from 'react-router-dom';
 import { BsFillChatRightTextFill } from 'react-icons/bs';
 import { AiOutlineSmile, AiFillLock } from 'react-icons/ai';
 import { images } from 'assets';
-import {
-    animationTypes,
-    buttons,
-    labels,
-    paragraphs,
-} from 'staticResources';
+import { buttons, labels, paragraphs } from 'staticResources';
 import { siteMap } from 'Router';
 
 export const Signup = () => {
@@ -51,7 +47,7 @@ export const Signup = () => {
             >
                 <Form>
                     <FramerMotionAnimation
-                        animation={animationTypes.bottomToTop}
+                        animationVariant={animationTypes.bottomToTop}
                         animationDuration={0.3}
                     >
                         <FlexContainer flexDirection="column">
@@ -73,7 +69,7 @@ export const Signup = () => {
                     </FramerMotionAnimation>
 
                     <FramerMotionAnimation
-                        animation={animationTypes.bottomToTop}
+                        animationVariant={animationTypes.bottomToTop}
                         animationDuration={0.5}
                     >
                         <Input
@@ -101,7 +97,7 @@ export const Signup = () => {
                         />
                     </FramerMotionAnimation>
                     <FramerMotionAnimation
-                        animation={animationTypes.bottomToTop}
+                        animationVariant={animationTypes.bottomToTop}
                         animationDuration={1.2}
                     >
                         <Button text={buttons.createAccount} />
@@ -109,7 +105,7 @@ export const Signup = () => {
                 </Form>
 
                 <FramerMotionAnimation
-                    animation={animationTypes.insideOut}
+                    animationVariant={animationTypes.insideOut}
                 >
                     <Image src={images.signup} alt="signup-image" />
                 </FramerMotionAnimation>

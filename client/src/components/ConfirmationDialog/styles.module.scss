@@ -1,0 +1,30 @@
+@use '../../sassStyles/variables';
+@use '../../sassStyles/utility.module';
+
+.confirmation-dialog {
+    background-color: variables.$darkPrimary;
+    padding: 1rem;
+    width: 325px;
+    border-radius: 0.5rem;
+    white-space: break-spaces;
+
+    p:first-child {
+        font-size: 1.125rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    &__actions {
+        margin-top: 2rem;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        &__confirm-btn {
+            background-color: variables.$danger;
+
+            &:hover {
+                outline: 2px solid variables.$danger;
+            }
+        }
+    }
+}

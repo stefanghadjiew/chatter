@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { FlexContainer } from 'containers';
 import {
     Button,
@@ -6,6 +6,7 @@ import {
     Input,
     Paragraph,
     FramerMotionAnimation,
+    animationTypes,
 } from 'components';
 import { useAppDispatch } from 'app/hooks';
 import { decrementStep } from 'features/stepper/stepperSlice';
@@ -13,13 +14,14 @@ import classes from './styles.module.scss';
 import { List } from 'views/Chat/List';
 import { useInput, useScrollToBottom } from 'customHooks';
 import { filterUserFriends } from 'utils';
-import { animationTypes } from 'staticResources';
-
 import { AddedMember } from './AddedMember';
 import { AnimatePresence } from 'framer-motion';
 
 export const AddMembers = () => {
     const dispatch = useAppDispatch();
+    const listItemRefs = useRef([]);
+    const { value: filterValue, handleChange: handleFilterChange } =
+        useInput('');
 
     const [usersToBeAddedToChannel, setUsersToBeAddedToChannel] = useState(
         []
@@ -44,9 +46,6 @@ export const AddMembers = () => {
             ...prevState.slice(userToBeRemovedIndex + 1),
         ]);
     };
-
-    const { value: filterValue, handleChange: handleFilterChange } =
-        useInput('');
 
     const data = useMemo(() => {
         return [
@@ -207,11 +206,13 @@ export const AddMembers = () => {
         <FramerMotionAnimation
             motionKey={`${user}--added-member--animation`}
             key={user + i}
-            animation={animationTypes.insideOut}
+            animationVariant={animationTypes.insideOut}
             animationDuration={0.2}
             componentClasses={classes['height-auto']}
         >
             <AddedMember
+                data={data}
+                listItemRefs={listItemRefs}
                 user={user}
                 handleRemoveUserFromAddedUsers={
                     handleRemoveUserFromAddedUsers
@@ -265,6 +266,7 @@ export const AddMembers = () => {
                 </ul>
             </FlexContainer>
             <List
+                listItemRefs={listItemRefs}
                 listItems={filterValue ? filteredUserFriends : data}
                 handleAddUsersToChannel={handleAddUsersToChannel}
                 handleRemoveUserFromAddedUsers={

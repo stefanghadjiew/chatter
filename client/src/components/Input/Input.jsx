@@ -15,7 +15,7 @@ export const Input = ({
     removeLabel = false,
     componentClasses,
     componentInputClasses,
-
+    onKeyDown,
     removeBorder,
     removeOutline,
 }) => {
@@ -74,6 +74,7 @@ export const Input = ({
                 name="name"
                 type={type}
                 autoComplete="off"
+                onKeyDown={onKeyDown}
             />
 
             {!removeLabel && <label htmlFor="name">{label}</label>}
