@@ -1,0 +1,64 @@
+@use '../../../../../../sassStyles/utility.module';
+@use '../../../../../../sassStyles/variables';
+
+.edit-contact {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: variables.$darkPrimary;
+
+    input {
+        padding: 0;
+        background-color: transparent;
+
+        border-bottom: 1px solid variables.$white;
+
+        &:focus-within {
+            border-bottom: 2px solid variables.$darkPrimary;
+        }
+    }
+
+    label {
+        padding: 0;
+    }
+
+    &__input {
+        &:focus-within label,
+        input:not(:placeholder-shown) ~ label {
+            padding: 0;
+            top: -14px;
+            left: 0;
+            bottom: auto;
+        }
+    }
+
+    p:first-child {
+        font-size: 1.125rem;
+    }
+
+    &__phone {
+        p {
+            &:first-child {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            &:last-child {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &__actions {
+        margin-top: 2rem;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        &__confirm-btn {
+            background-color: variables.$danger;
+
+            &:hover {
+                outline: 2px solid variables.$danger;
+            }
+        }
+    }
+}

@@ -4,8 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { siteMap } from 'Router';
 import { terms } from 'staticResources';
 import { assignClasses } from 'utils';
-import { FramerMotionAnimation } from 'components';
-import { animationTypes } from 'staticResources';
+import { FramerMotionAnimation, animationTypes } from 'components';
 
 export const Form = ({
     children,
@@ -22,7 +21,7 @@ export const Form = ({
             {children}
             {isSignup && (
                 <FramerMotionAnimation
-                    animation={animationTypes.bottomToTop}
+                    animationVariant={animationTypes.bottomToTop}
                     animationDuration={1.2}
                 >
                     <div

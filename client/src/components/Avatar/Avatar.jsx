@@ -7,8 +7,9 @@ export const Avatar = ({
     alt = 'some avatar image',
     componentClasses,
     size,
+    onClick,
 }) => {
-    const AVATAR_SIZES = ['small', 'medium', 'large'];
+    const AVATAR_SIZES = ['small', 'medium', 'large', 'extra-large'];
 
     const assignSize = AVATAR_SIZES.includes(size)
         ? classes[`avatar--${size}`]
@@ -16,6 +17,7 @@ export const Avatar = ({
 
     return (
         <figure
+            onClick={onClick}
             className={[
                 assignClasses(componentClasses),
                 classes['avatar'],

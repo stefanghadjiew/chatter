@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import utilityClasses from '../../sassStyles/_utility.module.scss';
 import { assignClasses } from 'utils';
 
-export const FlexContainer = ({
-    children,
-    componentClasses,
-    justifyContent,
-    alignItems,
-    flexDirection,
-    centered,
-}) => {
+export const FlexContainer = forwardRef((props, ref) => {
+    const {
+        children,
+        componentClasses,
+        justifyContent,
+        alignItems,
+        flexDirection,
+        centered,
+        onClick,
+    } = props;
     const CONTAINER_CLASSES = {
         justifyContent: [
             'start',
@@ -47,6 +49,8 @@ export const FlexContainer = ({
 
     return (
         <div
+            ref={ref}
+            onClick={onClick}
             className={[
                 assignClasses(componentClasses),
                 utilityClasses['flex'],
@@ -60,4 +64,4 @@ export const FlexContainer = ({
             {children}
         </div>
     );
-};
+});

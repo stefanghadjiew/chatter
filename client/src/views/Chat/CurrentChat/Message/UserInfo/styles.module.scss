@@ -1,0 +1,138 @@
+@use '../../../../../sassStyles/variables';
+@use '../../../../../sassStyles/utility.module';
+@use '../../../../../sassStyles/mixins';
+
+.user-info {
+    width: 400px;
+    border-radius: 0.5rem;
+    background-color: variables.$primary;
+    padding: 1rem 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    p {
+        color: variables.$white;
+    }
+
+    &__header-wrapper {
+        padding-bottom: 1rem;
+        border-bottom: 10px solid variables.$darkPrimary;
+    }
+
+    &__header {
+        p {
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        &__username {
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        &__user-last-seen {
+            opacity: 0.6;
+        }
+    }
+
+    &__second-section {
+        color: variables.$white;
+        padding-bottom: 0.5rem;
+        border-bottom: 10px solid variables.$darkPrimary;
+        svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 2rem;
+        }
+
+        &__mobile {
+            align-items: center;
+            padding: 0.5rem 1rem;
+
+            p:last-child {
+                opacity: 0.6;
+            }
+        }
+
+        &__notifications {
+            cursor: pointer;
+            align-items: center;
+            transition: background-color 0.2s ease-in-out;
+            padding: 0.5rem 1rem;
+
+            &:hover {
+                background-color: variables.$darkPrimary;
+            }
+
+            &--send-message {
+                padding-left: 3.5rem;
+
+                color: #19b5fe !important;
+
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__n-th-section {
+        color: variables.$white;
+        padding: 0.5rem 0;
+        border-bottom: 10px solid variables.$darkPrimary;
+
+        &:last-child {
+            padding-bottom: 0;
+            border: 0;
+        }
+
+        &--child {
+            align-items: center;
+            &:hover {
+                background-color: variables.$darkPrimary;
+                cursor: pointer;
+            }
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 2rem;
+        }
+
+        &--block-user {
+            color: variables.$danger !important;
+        }
+    }
+
+    &__confirmation-dialog__container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+
+        transition: all 0.2s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        pointer-events: none;
+        @include mixins.flex-center;
+        border-radius: 0.5rem;
+
+        &--open {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+}
+
+.test {
+    background-color: variables.$primary;
+}

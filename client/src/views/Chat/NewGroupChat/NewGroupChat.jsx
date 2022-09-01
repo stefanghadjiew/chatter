@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
-import { FramerMotionAnimation, Input, Button } from 'components';
-import { animationTypes } from 'staticResources';
+import {
+    FramerMotionAnimation,
+    animationTypes,
+    Input,
+    Button,
+} from 'components';
 import { FlexContainer } from 'containers';
 import { AiFillCamera } from 'react-icons/ai';
 import classes from './styles.module.scss';
@@ -22,7 +26,7 @@ export const NewGroupChat = () => {
 
     return (
         <FramerMotionAnimation
-            animation={animationTypes.insideOut}
+            animationVariant={animationTypes.insideOut}
             animationDuration={0.3}
             componentClasses={classes['framer-animation']}
             motionKey="new-group-chat-animation"

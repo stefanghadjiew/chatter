@@ -1,0 +1,52 @@
+@use '../../../../sassStyles/variables';
+
+.chat-messages {
+    &__inner-container {
+        padding: 0.25rem 0 0.5rem 0.5rem;
+    }
+
+    &__inner-container:not(:first-child) {
+        padding-bottom: 0.25rem;
+    }
+
+    &__avatar {
+        margin-right: 0.5rem;
+        margin-top: auto;
+        opacity: 0;
+        cursor: pointer;
+        /* pointer-events: none; */
+
+        &--last-message {
+            opacity: 1;
+        }
+    }
+
+    &__message {
+        padding: 0.5rem;
+
+        border-radius: 0.75rem;
+        min-width: 125px;
+        max-width: 400px;
+        color: variables.$white;
+        background-color: variables.$message;
+
+        &--from-user {
+            background: variables.$primary;
+        }
+
+        &--last-message {
+            //do the ::before for styling
+            background-color: red;
+        }
+
+        p:first-child {
+            margin-bottom: 0.5rem;
+        }
+
+        &__time {
+            margin-left: auto;
+            margin-top: -0.5rem;
+            opacity: 0.4;
+        }
+    }
+}

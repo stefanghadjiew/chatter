@@ -1,0 +1,16 @@
+@use '../../sassStyles/variables';
+
+.scroll-to-bottom__btn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    button {
+        position: absolute;
+        bottom: 56px;
+        right: 60px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        background-color: variables.$primary;
+    }
+}

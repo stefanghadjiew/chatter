@@ -4,17 +4,33 @@ import {
     Paragraph,
     IconButton,
     FramerMotionAnimation,
+    animationTypes,
 } from 'components';
 import classes from './styles.module.scss';
 import { images } from 'assets';
 import { GrFormClose } from 'react-icons/gr';
-import { animationTypes } from 'staticResources';
 import { AnimatePresence } from 'framer-motion';
 
-export const AddedMember = ({ user, handleRemoveUserFromAddedUsers }) => {
+export const AddedMember = ({
+    user,
+    handleRemoveUserFromAddedUsers,
+    listItemRefs,
+    data: userFriendsList,
+}) => {
     //imgSrc will become user.avatar (saved on the backend)
 
     const [isHovered, setIsHovered] = useState(false);
+    const handleRemoveUserAndActiveClassFromAddedUsers = e => {
+        e.stopPropagation();
+        const currentUserIndexToRemoveAddedClassFrom =
+            userFriendsList.findIndex(
+                _user => `${_user.name} ${_user.lastName}` === user
+            );
+        listItemRefs.current[
+            currentUserIndexToRemoveAddedClassFrom
+        ].classList.remove('styles_list__item--added__Kx5yo');
+        handleRemoveUserFromAddedUsers(user);
+    };
 
     return (
         <li
@@ -26,15 +42,14 @@ export const AddedMember = ({ user, handleRemoveUserFromAddedUsers }) => {
                 {isHovered ? (
                     <FramerMotionAnimation
                         motionKey="added-member__close-button__animation"
-                        animation={animationTypes.rotateRightToLeft}
+                        animationVariant={animationTypes.rotateRightToLeft}
                         animationDuration={0.2}
                         componentClasses={classes['height-auto']}
                     >
                         <IconButton
-                            onClick={e => {
-                                e.stopPropagation();
-                                handleRemoveUserFromAddedUsers(user);
-                            }}
+                            onClick={
+                                handleRemoveUserAndActiveClassFromAddedUsers
+                            }
                             componentClasses={
                                 classes['added-member__close-icon']
                             }
@@ -44,7 +59,7 @@ export const AddedMember = ({ user, handleRemoveUserFromAddedUsers }) => {
                 ) : (
                     <FramerMotionAnimation
                         motionKey="added-member__avatar__animation"
-                        animation={animationTypes.rotateLeftToRight}
+                        animationVariant={animationTypes.rotateLeftToRight}
                         animationDuration={0.2}
                         componentClasses={classes['height-auto']}
                     >

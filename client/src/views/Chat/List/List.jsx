@@ -1,18 +1,18 @@
-import { useRef } from 'react';
 import classes from './styles.module.scss';
 import { FlexContainer } from 'containers';
 import { Avatar, Paragraph } from 'components';
 import { images } from 'assets';
 import { TiTick } from 'react-icons/ti';
+import { assignClasses } from 'utils';
 
 export const List = ({
     listItems,
-    handleAddUsersToChannel,
-    handleRemoveUserFromAddedUsers,
+    handleAddUsersToChannel = null,
+    listItemRefs = null,
+    componentClasses,
 }) => {
     //make handleAddUsersToChannel append only the first name of the user
-
-    let listItemRefs = useRef([]);
+    //listItemRefs is an optional property
 
     const renderListItems =
         listItems.length === 0 ? (
@@ -27,25 +27,35 @@ export const List = ({
         ) : (
             listItems.map((listItem, i) => (
                 <li
-                    ref={el =>
-                        (listItemRefs.current = [
-                            ...listItemRefs.current,
-                            el,
-                        ])
+                    ref={
+                        listItemRefs
+                            ? el =>
+                                  (listItemRefs.current = [
+                                      ...listItemRefs.current,
+                                      el,
+                                  ])
+                            : null
                     }
                     key={listItem + i}
                     className={classes['list__item']}
-                    onClick={() => {
-                        handleAddUsersToChannel(
-                            `${listItem.name} ${listItem.lastName}`
-                        );
-                        listItemRefs.current[i].classList.toggle(
-                            classes['list__item--added']
-                        );
-                    }}
+                    onClick={
+                        handleAddUsersToChannel
+                            ? () => {
+                                  handleAddUsersToChannel(
+                                      `${listItem.name} ${listItem.lastName}`
+                                  );
+
+                                  listItemRefs?.current[
+                                      i
+                                  ].classList.toggle(
+                                      classes['list__item--added']
+                                  );
+                              }
+                            : null
+                    }
                 >
                     <Avatar imgSrc={images.birdChat} />
-                    {listItemRefs.current[i]?.classList.contains(
+                    {listItemRefs?.current[i]?.classList.contains(
                         classes['list__item--added']
                     ) && (
                         <TiTick
@@ -83,7 +93,10 @@ export const List = ({
     return (
         <FlexContainer
             flexDirection="column"
-            componentClasses={classes['list-container']}
+            componentClasses={[
+                assignClasses(componentClasses),
+                classes['list-container'],
+            ]}
         >
             <ul className={classes['full-container-size']}>
                 {renderListItems}

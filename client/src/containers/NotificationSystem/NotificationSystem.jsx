@@ -2,11 +2,10 @@ import { usePortal } from 'customHooks';
 import classes from './styles.module.scss';
 import ReactDOM from 'react-dom';
 import { useAppSelector, useAppDispatch } from 'app/hooks';
-import { Button, FramerMotionAnimation } from 'components';
+import { Button, FramerMotionAnimation, animationTypes } from 'components';
 import { addMessage } from 'features/notificationSystem/notificationSystemSlice';
 import { MessageToast } from './MessageToast';
 import { AnimatePresence } from 'framer-motion';
-import { animationTypes } from 'staticResources';
 
 export const NotificationSystem = () => {
     const [loaded, portalId] = usePortal('notification-system', 3);
@@ -15,7 +14,7 @@ export const NotificationSystem = () => {
 
     const renderMessages = messages?.map(message => (
         <FramerMotionAnimation
-            animation={animationTypes.leftToRight}
+            animationVariant={animationTypes.leftToRight}
             animationDuration={0.2}
             key={message.id}
             motionKey={message.id}

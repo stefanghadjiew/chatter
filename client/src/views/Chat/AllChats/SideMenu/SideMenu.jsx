@@ -1,7 +1,12 @@
 import { useMemo } from 'react';
 import classes from './styles.module.scss';
 import { FlexContainer } from 'containers';
-import { Avatar, Paragraph, FramerMotionAnimation } from 'components';
+import {
+    Avatar,
+    Paragraph,
+    FramerMotionAnimation,
+    animationTypes,
+} from 'components';
 import { images } from 'assets';
 import {
     MdGroup,
@@ -13,7 +18,6 @@ import { ImPhone } from 'react-icons/im';
 import { FaSave } from 'react-icons/fa';
 import { IoMdSettings } from 'react-icons/io';
 import { UserInfo } from './UserInfo';
-import { animationTypes } from 'staticResources';
 import { useAppDispatch } from 'app/hooks';
 import { addChild } from 'features/backdropPortal/backdropPortalSlice';
 import { NewGroupChat } from 'views/Chat/NewGroupChat';
@@ -86,7 +90,7 @@ export const SideMenu = () => {
 
     return (
         <FramerMotionAnimation
-            animation={animationTypes.rightToLeft}
+            animationVariant={animationTypes.rightToLeft}
             animationDuration={0.2}
             motionKey="framer-motion-side-menu"
             componentClasses={classes['side-menu-wrapper']}

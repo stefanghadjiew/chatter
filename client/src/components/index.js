@@ -6,3 +6,5 @@ export * from './Typography';
 export * from './FramerMotionAnimation';
 export * from './Avatar';
 export * from './IconButton';
+export * from './ScrollToBottomButton';
+export * from './ConfirmationDialog';

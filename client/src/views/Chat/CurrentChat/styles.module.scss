@@ -3,6 +3,7 @@
 .current-chat {
     width: 100%;
     position: relative;
+    height: 100vh;
 
     .type-message-wrapper {
         display: flex;
@@ -37,45 +38,6 @@
                 svg {
                     color: variables.$primary;
                 }
-            }
-        }
-    }
-
-    .chat-messages {
-        display: flex;
-        height: calc(100% - 3rem);
-        flex-direction: column-reverse;
-
-        &__inner-container {
-            padding: 0.25rem 0 0.5rem 0.5rem;
-        }
-
-        &__inner-container:not(:first-child) {
-            padding-bottom: 0.25rem;
-        }
-
-        &__avatar {
-            margin-right: 0.5rem;
-            margin-top: auto;
-        }
-
-        &__message {
-            background: variables.$primary;
-            padding: 0.5rem;
-
-            border-radius: 0.75rem;
-            min-width: 125px;
-            max-width: 400px;
-            color: variables.$white;
-
-            p:first-child {
-                margin-bottom: 0.5rem;
-            }
-
-            &__time {
-                margin-left: auto;
-                margin-top: -0.5rem;
-                opacity: 0.4;
             }
         }
     }

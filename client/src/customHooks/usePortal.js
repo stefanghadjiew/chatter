@@ -7,7 +7,7 @@ export const usePortal = (id, stackingContext) => {
     useEffect(() => {
         const div = document.createElement('div');
         div.id = portalId;
-        div.style = `position: fixed; z-index: ${stackingContext}`;
+        div.style = `position: fixed; z-index: ${stackingContext}; background-color: rgba(0,0,0,0.5)`;
         document.getElementsByTagName('body')[0].prepend(div);
         setLoaded(true);
         return () => {
