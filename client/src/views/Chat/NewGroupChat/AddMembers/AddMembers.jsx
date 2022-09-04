@@ -269,9 +269,6 @@ export const AddMembers = () => {
                 listItemRefs={listItemRefs}
                 listItems={filterValue ? filteredUserFriends : data}
                 handleAddUsersToChannel={handleAddUsersToChannel}
-                handleRemoveUserFromAddedUsers={
-                    handleRemoveUserFromAddedUsers
-                }
             />
 
             <FlexContainer

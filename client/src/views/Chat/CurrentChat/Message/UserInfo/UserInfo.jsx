@@ -5,6 +5,8 @@ import {
     IconButton,
     Avatar,
     ConfirmationDialog,
+    FramerMotionAnimation,
+    animationTypes,
 } from 'components';
 import classes from './styles.module.scss';
 import { ImPhone } from 'react-icons/im';
@@ -37,8 +39,11 @@ import {
     addOnCloseEditContactHandler,
 } from 'features/editUser/editUserSlice';
 import { EditContact } from './EditContact';
-import { List } from 'views/Chat/List';
 import { ShareThisContact } from './ShareThisContact';
+import {
+    removeChild,
+    closePortal,
+} from 'features/backdropPortal/backdropPortalSlice';
 
 export const UserInfo = () => {
     //a lot of repeating code here -> extract in to .map()
@@ -368,121 +373,142 @@ export const UserInfo = () => {
             lastSeen: 'last seen yesterday at 3:30 PM',
         },
     ];
-
+    //TODO: Add FramerMotionAnimation
     return (
-        <FlexContainer
-            flexDirection="column"
-            componentClasses={classes['user-info']}
-            ref={componentRef}
+        <FramerMotionAnimation
+            animationVariant={animationTypes.insideOut}
+            animationDuration={0.2}
+            motionKey="user-info-animation"
         >
             <FlexContainer
                 flexDirection="column"
-                componentClasses={classes['user-info__header-wrapper']}
+                componentClasses={classes['user-info']}
+                ref={componentRef}
             >
                 <FlexContainer
-                    componentClasses={classes['user-info__header']}
+                    flexDirection="column"
+                    componentClasses={classes['user-info__header-wrapper']}
                 >
-                    <Paragraph text="User Info" />
-                    <FlexContainer>
-                        <IconButton icon={<ImPhone />} />
-                        <IconButton icon={<BsThreeDotsVertical />} />
-                        <IconButton icon={<IoMdClose />} />
+                    <FlexContainer
+                        componentClasses={classes['user-info__header']}
+                    >
+                        <Paragraph text="User Info" />
+                        <FlexContainer>
+                            <IconButton icon={<ImPhone />} />
+                            <IconButton icon={<BsThreeDotsVertical />} />
+                            <IconButton
+                                icon={<IoMdClose />}
+                                onClick={() => {
+                                    dispatch(removeChild());
+                                    dispatch(closePortal());
+                                }}
+                            />
+                        </FlexContainer>
+                    </FlexContainer>
+                    <FlexContainer
+                        componentClasses={[
+                            classes['p-x-1'],
+                            classes['p-t-2'],
+                            classes['flex-align-center'],
+                        ]}
+                    >
+                        <Avatar
+                            imgSrc={images.birdChat}
+                            size="extra-large"
+                        />
+                        <FlexContainer
+                            flexDirection="column"
+                            componentClasses={classes['p-l-1']}
+                        >
+                            <Paragraph
+                                text="Username"
+                                componentClasses={
+                                    classes['user-info__header__username']
+                                }
+                            />
+                            <Paragraph
+                                text="last seen today at 11:00 PM"
+                                componentClasses={
+                                    classes[
+                                        'user-info__header__user-last-seen'
+                                    ]
+                                }
+                            />
+                        </FlexContainer>
                     </FlexContainer>
                 </FlexContainer>
                 <FlexContainer
-                    componentClasses={[
-                        classes['p-x-1'],
-                        classes['p-t-2'],
-                        classes['flex-align-center'],
-                    ]}
+                    flexDirection="column"
+                    componentClasses={classes['user-info__second-section']}
                 >
-                    <Avatar imgSrc={images.birdChat} size="extra-large" />
                     <FlexContainer
-                        flexDirection="column"
-                        componentClasses={classes['p-l-1']}
+                        componentClasses={
+                            classes['user-info__second-section__mobile']
+                        }
+                    >
+                        <AiOutlineInfoCircle />
+                        <FlexContainer flexDirection="column">
+                            <Paragraph text="+359 884703361" />
+                            <Paragraph text="Mobile" />
+                        </FlexContainer>
+                    </FlexContainer>
+                    <FlexContainer
+                        componentClasses={
+                            classes[
+                                'user-info__second-section__notifications'
+                            ]
+                        }
+                    >
+                        <IoMdNotificationsOutline />
+
+                        <Paragraph text="Notifications" />
+                    </FlexContainer>
+                    <FlexContainer
+                        componentClasses={
+                            classes[
+                                'user-info__second-section__notifications'
+                            ]
+                        }
                     >
                         <Paragraph
-                            text="Username"
-                            componentClasses={
-                                classes['user-info__header__username']
-                            }
-                        />
-                        <Paragraph
-                            text="last seen today at 11:00 PM"
+                            text="SEND MESSAGE"
                             componentClasses={
                                 classes[
-                                    'user-info__header__user-last-seen'
+                                    'user-info__second-section__notifications--send-message'
                                 ]
                             }
                         />
                     </FlexContainer>
                 </FlexContainer>
-            </FlexContainer>
-            <FlexContainer
-                flexDirection="column"
-                componentClasses={classes['user-info__second-section']}
-            >
                 <FlexContainer
-                    componentClasses={
-                        classes['user-info__second-section__mobile']
-                    }
+                    flexDirection="column"
+                    componentClasses={classes['user-info__n-th-section']}
                 >
-                    <AiOutlineInfoCircle />
-                    <FlexContainer flexDirection="column">
-                        <Paragraph text="+359 884703361" />
-                        <Paragraph text="Mobile" />
-                    </FlexContainer>
+                    {renderThirdSection}
                 </FlexContainer>
                 <FlexContainer
-                    componentClasses={
-                        classes['user-info__second-section__notifications']
-                    }
+                    flexDirection="column"
+                    componentClasses={classes['user-info__n-th-section']}
                 >
-                    <IoMdNotificationsOutline />
-
-                    <Paragraph text="Notifications" />
+                    {renderFourthSection}
                 </FlexContainer>
-                <FlexContainer
-                    componentClasses={
-                        classes['user-info__second-section__notifications']
+                <div
+                    ref={confirmationDialogContainerRef}
+                    className={
+                        classes[
+                            'user-info__confirmation-dialog__container'
+                        ]
                     }
                 >
-                    <Paragraph
-                        text="SEND MESSAGE"
-                        componentClasses={
-                            classes[
-                                'user-info__second-section__notifications--send-message'
-                            ]
-                        }
+                    <ConfirmationDialog />
+                    <EditContact />
+                    <ShareThisContact
+                        isOpen={isShareThisContactOpen}
+                        userContacts={userFriendsList}
+                        onClose={handleShareThisContact}
                     />
-                </FlexContainer>
+                </div>
             </FlexContainer>
-            <FlexContainer
-                flexDirection="column"
-                componentClasses={classes['user-info__n-th-section']}
-            >
-                {renderThirdSection}
-            </FlexContainer>
-            <FlexContainer
-                flexDirection="column"
-                componentClasses={classes['user-info__n-th-section']}
-            >
-                {renderFourthSection}
-            </FlexContainer>
-            <div
-                ref={confirmationDialogContainerRef}
-                className={
-                    classes['user-info__confirmation-dialog__container']
-                }
-            >
-                <ConfirmationDialog />
-                <EditContact />
-                <ShareThisContact
-                    isOpen={isShareThisContactOpen}
-                    userContacts={userFriendsList}
-                    onClose={handleShareThisContact}
-                />
-            </div>
-        </FlexContainer>
+        </FramerMotionAnimation>
     );
 };
