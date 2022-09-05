@@ -9,11 +9,12 @@ import {
     isArray,
     isArrayEmpty,
     toggleClassForDOMElement,
+    isNotNull,
 } from 'utils';
 
 export const List = ({
     listItems,
-    handleAddUsersToChannel = null,
+    OnListItemClickHandler = null,
     listItemRefs = null,
     componentClasses,
 }) => {
@@ -24,7 +25,7 @@ export const List = ({
     if (!isArray(listItems)) return;
 
     const handleListItemClick = (listItem, index) => {
-        handleAddUsersToChannel(`${listItem.name} ${listItem.lastName}`);
+        OnListItemClickHandler(`${listItem.name} ${listItem.lastName}`);
         toggleClassForDOMElement(
             listItemRefs?.current[index],
             classes['list__item--added']
@@ -44,6 +45,7 @@ export const List = ({
         listItems.map((listItem, i) => (
             <li
                 ref={
+                    isNotNull(listItemRefs) &&
                     isArray(listItemRefs.current)
                         ? el => addReffToListOfRefs(el, listItemRefs)
                         : null
@@ -51,7 +53,7 @@ export const List = ({
                 key={listItem + i}
                 className={classes['list__item']}
                 onClick={
-                    handleAddUsersToChannel
+                    OnListItemClickHandler
                         ? () => handleListItemClick(listItem, i)
                         : null
                 }

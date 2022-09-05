@@ -1,0 +1,36 @@
+@use '../../../../../../sassStyles/utility.module';
+@use '../../../../../../sassStyles/variables';
+
+.kebab-menu {
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0.5px 1px 1px 1px rgba(0, 0, 0);
+    align-items: center;
+    color: variables.$white;
+
+    svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 1rem;
+    }
+
+    &__item {
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        &:hover {
+            background-color: variables.$darkPrimary;
+        }
+
+        &:first-child {
+            border-bottom: 10px solid variables.$darkPrimary;
+        }
+    }
+}
+
+.framer-motion {
+    height: auto;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    background-color: variables.$primary;
+}
