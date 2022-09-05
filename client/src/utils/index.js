@@ -7,3 +7,4 @@ export * from './filterUserFriends';
 export * from './addRefToListOfRefs';
 export * from './isArray';
 export * from './toggleClassForDOMElement';
+export * from './isNotNull';

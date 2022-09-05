@@ -44,6 +44,7 @@ import {
     removeChild,
     closePortal,
 } from 'features/backdropPortal/backdropPortalSlice';
+import { KebabMenu } from './KebabMenu';
 
 export const UserInfo = () => {
     //a lot of repeating code here -> extract in to .map()
@@ -51,6 +52,7 @@ export const UserInfo = () => {
     const confirmationDialogContainerRef = useRef(null);
     const [isShareThisContactOpen, setIsShareThisContactOpen] =
         useState(false);
+    const [isKebabMenuOpen, setIsKebabMenuOpen] = useState(false);
     const dispatch = useAppDispatch();
 
     const handleDialogClose = () => {
@@ -156,14 +158,7 @@ export const UserInfo = () => {
             id: 1,
             text: 'Share this contact',
             icon: <RiShareForwardLine />,
-            onClick: () => {
-                setIsShareThisContactOpen(!isShareThisContactOpen);
-                confirmationDialogContainerRef.current?.classList.toggle(
-                    classes[
-                        'user-info__confirmation-dialog__container--open'
-                    ]
-                );
-            },
+            onClick: handleShareThisContact,
         },
         {
             id: 2,
@@ -395,7 +390,13 @@ export const UserInfo = () => {
                         <Paragraph text="User Info" />
                         <FlexContainer>
                             <IconButton icon={<ImPhone />} />
-                            <IconButton icon={<BsThreeDotsVertical />} />
+                            <IconButton
+                                icon={<BsThreeDotsVertical />}
+                                onClick={e => {
+                                    e.stopPropagation();
+                                    setIsKebabMenuOpen(!isKebabMenuOpen);
+                                }}
+                            />
                             <IconButton
                                 icon={<IoMdClose />}
                                 onClick={() => {
@@ -508,6 +509,14 @@ export const UserInfo = () => {
                         onClose={handleShareThisContact}
                     />
                 </div>
+                <KebabMenu
+                    isKebabMenuOpen={isKebabMenuOpen}
+                    setIsKebabMenuOpen={setIsKebabMenuOpen}
+                    handleBlockUserDialog={handleBlockUserDialog}
+                    handleDeleteUserDialog={handleDeleteUserDialog}
+                    handleEditContact={handleEditContact}
+                    handleShareThisContact={handleShareThisContact}
+                />
             </FlexContainer>
         </FramerMotionAnimation>
     );
