@@ -7,6 +7,7 @@ import {
     ConfirmationDialog,
     FramerMotionAnimation,
     animationTypes,
+    DIALOG_TYPES,
 } from 'components';
 import classes from './styles.module.scss';
 import { ImPhone } from 'react-icons/im';
@@ -29,15 +30,11 @@ import { FaRegHandPaper } from 'react-icons/fa';
 import { useAppDispatch } from 'app/hooks';
 import {
     addConfirmation,
-    addOnCloseHandler,
-    addOnConfirmHandler,
+    setDialogType,
     addTitle,
     toggleDialog,
 } from 'features/confirmationDialog/confirmationDialog';
-import {
-    toggleEditUserDialog,
-    addOnCloseEditContactHandler,
-} from 'features/editUser/editUserSlice';
+import { toggleEditUserDialog } from 'features/editUser/editUserSlice';
 import { EditContact } from './EditContact';
 import { ShareThisContact } from './ShareThisContact';
 import {
@@ -45,15 +42,17 @@ import {
     closePortal,
 } from 'features/backdropPortal/backdropPortalSlice';
 import { KebabMenu } from './KebabMenu';
+import { useOutsideClick } from 'customHooks';
 
 export const UserInfo = () => {
-    //a lot of repeating code here -> extract in to .map()
+    const componentAnimationRef = useRef(null);
     const componentRef = useRef(null);
     const confirmationDialogContainerRef = useRef(null);
     const [isShareThisContactOpen, setIsShareThisContactOpen] =
         useState(false);
     const [isKebabMenuOpen, setIsKebabMenuOpen] = useState(false);
     const dispatch = useAppDispatch();
+    useOutsideClick(componentAnimationRef);
 
     const handleDialogClose = () => {
         dispatch(toggleDialog());
@@ -76,9 +75,7 @@ export const UserInfo = () => {
                 'Do you want to block <b>Username<b/> from messaging and calling you on Chatter ?'
             )
         );
-
-        dispatch(addOnCloseHandler(handleDialogClose));
-        dispatch(addOnConfirmHandler());
+        dispatch(setDialogType(DIALOG_TYPES.block));
         dispatch(toggleDialog());
         confirmationDialogContainerRef.current?.classList.toggle(
             classes['user-info__confirmation-dialog__container--open']
@@ -92,7 +89,7 @@ export const UserInfo = () => {
                 'Are you sure you want to delete <b>Username</b> from your contact list ?'
             )
         );
-        dispatch(addOnCloseHandler(handleDialogClose));
+        dispatch(setDialogType(DIALOG_TYPES.delete));
         dispatch(toggleDialog());
         confirmationDialogContainerRef.current?.classList.toggle(
             classes['user-info__confirmation-dialog__container--open']
@@ -101,7 +98,7 @@ export const UserInfo = () => {
 
     const handleEditContact = () => {
         dispatch(toggleEditUserDialog());
-        dispatch(addOnCloseEditContactHandler(handleEditContactClose));
+
         confirmationDialogContainerRef.current?.classList.toggle(
             classes['user-info__confirmation-dialog__container--open']
         );
@@ -371,15 +368,13 @@ export const UserInfo = () => {
     //TODO: Add FramerMotionAnimation
     return (
         <FramerMotionAnimation
+            ref={componentAnimationRef}
             animationVariant={animationTypes.insideOut}
             animationDuration={0.2}
+            componentClasses={classes['user-info']}
             motionKey="user-info-animation"
         >
-            <FlexContainer
-                flexDirection="column"
-                componentClasses={classes['user-info']}
-                ref={componentRef}
-            >
+            <FlexContainer flexDirection="column" ref={componentRef}>
                 <FlexContainer
                     flexDirection="column"
                     componentClasses={classes['user-info__header-wrapper']}
@@ -392,8 +387,7 @@ export const UserInfo = () => {
                             <IconButton icon={<ImPhone />} />
                             <IconButton
                                 icon={<BsThreeDotsVertical />}
-                                onClick={e => {
-                                    e.stopPropagation();
+                                onClick={() => {
                                     setIsKebabMenuOpen(!isKebabMenuOpen);
                                 }}
                             />
@@ -501,8 +495,16 @@ export const UserInfo = () => {
                         ]
                     }
                 >
-                    <ConfirmationDialog />
-                    <EditContact />
+                    <ConfirmationDialog
+                        onConfirm={{
+                            onDelete: () =>
+                                console.log('delete handler called'),
+                            onBlock: () =>
+                                console.log('block handler called'),
+                        }}
+                        onClose={handleDialogClose}
+                    />
+                    <EditContact onClose={handleEditContactClose} />
                     <ShareThisContact
                         isOpen={isShareThisContactOpen}
                         userContacts={userFriendsList}

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { FlexContainer } from 'containers';
 import { RiShareForwardLine } from 'react-icons/ri';
 import { VscEdit } from 'react-icons/vsc';
@@ -11,6 +12,7 @@ import {
 } from 'components';
 import { AnimatePresence } from 'framer-motion';
 import classes from './styles.module.scss';
+import { useOutsideClick } from 'customHooks';
 
 export const KebabMenu = ({
     isKebabMenuOpen,
@@ -20,6 +22,10 @@ export const KebabMenu = ({
     handleDeleteUserDialog,
     handleBlockUserDialog,
 }) => {
+    const kebabMenuRef = useRef(null);
+    useOutsideClick(kebabMenuRef, () =>
+        setIsKebabMenuOpen(!isKebabMenuOpen)
+    );
     const kebabMenuItems = [
         {
             id: 0,
@@ -96,6 +102,7 @@ export const KebabMenu = ({
         <AnimatePresence>
             {isKebabMenuOpen && (
                 <FramerMotionAnimation
+                    ref={kebabMenuRef}
                     motionKey="kebab-menu-animation"
                     animationVariant={animationTypes.insideOut}
                     animationDuration={0.2}

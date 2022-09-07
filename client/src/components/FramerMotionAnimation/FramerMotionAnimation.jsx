@@ -1,16 +1,18 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { animationVariants } from './animationTypes';
 import { assignClasses } from 'utils';
 import classes from './styles.module.scss';
 
-export const FramerMotionAnimation = ({
-    children,
-    animationVariant,
-    animationDuration,
-    motionKey,
-    componentClasses,
-}) => {
+export const FramerMotionAnimation = forwardRef((props, ref) => {
+    const {
+        children,
+        animationVariant,
+        animationDuration,
+        motionKey,
+        componentClasses,
+    } = props;
+
     const animation = animationVariants(animationDuration).hasOwnProperty(
         animationVariant
     )
@@ -19,6 +21,7 @@ export const FramerMotionAnimation = ({
 
     return (
         <motion.div
+            ref={ref}
             key={motionKey}
             className={[
                 assignClasses(componentClasses),
@@ -32,4 +35,4 @@ export const FramerMotionAnimation = ({
             {children}
         </motion.div>
     );
-};
+});

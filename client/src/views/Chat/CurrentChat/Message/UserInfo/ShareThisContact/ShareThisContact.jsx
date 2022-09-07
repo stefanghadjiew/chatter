@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { FlexContainer } from 'containers';
 import { List } from 'views/Chat/List';
 import {
@@ -11,6 +12,7 @@ import { useInput } from 'customHooks';
 import classes from './styles.module.scss';
 import { filterUserFriends } from 'utils';
 import { AnimatePresence } from 'framer-motion';
+import { useOutsideClick } from 'customHooks';
 
 export const ShareThisContact = ({
     isOpen,
@@ -18,7 +20,10 @@ export const ShareThisContact = ({
     onClose /* , handleUserContactClick */,
 }) => {
     //still need to create the handler -> needs to swap this component for a confirmation dialog
-
+    const shareThisContactRef = useRef(null);
+    useOutsideClick(shareThisContactRef, () => {
+        onClose();
+    });
     const { value: searchQuery, handleChange: handleSearchQueryChange } =
         useInput('');
     const filteredUserContacts = filterUserFriends(
@@ -30,6 +35,7 @@ export const ShareThisContact = ({
         <AnimatePresence>
             {isOpen && (
                 <FramerMotionAnimation
+                    ref={shareThisContactRef}
                     componentClasses={classes['height-auto']}
                     animationVariant={animationTypes.insideOut}
                     animationDuration={0.2}

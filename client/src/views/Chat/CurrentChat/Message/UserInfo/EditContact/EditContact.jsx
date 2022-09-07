@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { FlexContainer } from 'containers';
 import {
     Paragraph,
@@ -12,10 +13,16 @@ import { AnimatePresence } from 'framer-motion';
 import classes from './styles.module.scss';
 import { images } from 'assets';
 import { useInput } from 'customHooks';
+import { useOutsideClick } from 'customHooks';
 
-export const EditContact = () => {
-    const { isOpen, phone, firstName, lastName, onConfirm, onClose } =
-        useAppSelector(state => state.editUserDialog);
+export const EditContact = ({ onConfirm, onClose }) => {
+    const editContactRef = useRef(null);
+    useOutsideClick(editContactRef, () => {
+        onClose();
+    });
+    const { isOpen, phone, firstName, lastName } = useAppSelector(
+        state => state.editUserDialog
+    );
     const newFirstName = useInput(firstName);
     const newLastName = useInput(lastName);
 
@@ -23,6 +30,7 @@ export const EditContact = () => {
         <AnimatePresence>
             {isOpen && (
                 <FramerMotionAnimation
+                    ref={editContactRef}
                     motionKey="edit-contact-animation"
                     animationVariant={animationTypes.insideOut}
                     animationDuration={0.2}

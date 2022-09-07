@@ -4,8 +4,7 @@ const initialState = {
     isOpen: false,
     title: '',
     confirmation: '',
-    onConfirm: null,
-    onClose: null,
+    type: '',
 };
 
 const confirmationDialogSlice = createSlice({
@@ -21,21 +20,13 @@ const confirmationDialogSlice = createSlice({
         addConfirmation(state, action) {
             state.confirmation = action.payload;
         },
-        addOnConfirmHandler(state, action) {
-            state.onConfirm = action.payload;
-        },
-        addOnCloseHandler(state, action) {
-            state.onClose = action.payload;
+        setDialogType(state, action) {
+            state.type = action.payload;
         },
     },
 });
 
-export const {
-    toggleDialog,
-    addTitle,
-    addConfirmation,
-    addOnConfirmHandler,
-    addOnCloseHandler,
-} = confirmationDialogSlice.actions;
+export const { toggleDialog, addTitle, addConfirmation, setDialogType } =
+    confirmationDialogSlice.actions;
 
 export default confirmationDialogSlice.reducer;

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import classes from './styles.module.scss';
 import { FlexContainer } from 'containers';
 import {
@@ -20,10 +20,12 @@ import { IoMdSettings } from 'react-icons/io';
 import { UserInfo } from './UserInfo';
 import { useAppDispatch } from 'app/hooks';
 import { addChild } from 'features/backdropPortal/backdropPortalSlice';
-import { NewGroupChat } from 'views/Chat/NewGroupChat';
+import { useOutsideClick } from 'customHooks';
 
 export const SideMenu = () => {
     const dispatch = useAppDispatch();
+    const componentRef = useRef(null);
+    useOutsideClick(componentRef);
 
     const renderSideMenuItems = useMemo(() => {
         const menuItems = [
@@ -32,7 +34,7 @@ export const SideMenu = () => {
                 icon: <MdGroup />,
                 bgClass: 'new-group',
                 onClick: () => {
-                    dispatch(addChild(<NewGroupChat />));
+                    dispatch(addChild('NewGroupChat'));
                 },
             },
             {
@@ -90,6 +92,7 @@ export const SideMenu = () => {
 
     return (
         <FramerMotionAnimation
+            ref={componentRef}
             animationVariant={animationTypes.rightToLeft}
             animationDuration={0.2}
             motionKey="framer-motion-side-menu"

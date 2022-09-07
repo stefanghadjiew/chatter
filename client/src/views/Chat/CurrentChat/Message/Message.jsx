@@ -27,7 +27,7 @@ export const Message = ({
         >
             <Avatar
                 onClick={() => {
-                    dispatch(addChild(<UserInfo />));
+                    dispatch(addChild('UserInfo'));
                     dispatch(openPortal());
                 }}
                 size="medium"

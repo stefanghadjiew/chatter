@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     isOpen: false,
     childComponent: null,
-    backdropPortalStyle: '',
 };
 
 const backdropPortalSlice = createSlice({
@@ -11,6 +10,7 @@ const backdropPortalSlice = createSlice({
     initialState,
     reducers: {
         openPortal(state) {
+            if (!state.childComponent) return;
             state.isOpen = true;
         },
         closePortal(state) {
@@ -22,22 +22,10 @@ const backdropPortalSlice = createSlice({
         removeChild(state) {
             state.childComponent = null;
         },
-        addStyle(state, action) {
-            state.backdropPortalStyle = action.payload;
-        },
-        removeStyle(state) {
-            state.backdropPortalStyle = '';
-        },
     },
 });
 
-export const {
-    openPortal,
-    closePortal,
-    addChild,
-    removeChild,
-    addStyle,
-    removeStyle,
-} = backdropPortalSlice.actions;
+export const { openPortal, closePortal, addChild, removeChild } =
+    backdropPortalSlice.actions;
 
 export default backdropPortalSlice.reducer;
