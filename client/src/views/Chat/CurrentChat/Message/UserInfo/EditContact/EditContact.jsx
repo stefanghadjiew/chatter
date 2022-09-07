@@ -91,9 +91,7 @@ export const EditContact = ({ onConfirm, onClose }) => {
                             />
                         </FlexContainer>
                         <FlexContainer
-                            componentClasses={
-                                classes['edit-contact__actions']
-                            }
+                            componentClasses={classes['edit-contact__actions']}
                         >
                             <Button
                                 text="Cancel"
