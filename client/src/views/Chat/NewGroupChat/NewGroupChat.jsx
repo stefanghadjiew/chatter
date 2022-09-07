@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
     FramerMotionAnimation,
     animationTypes,
@@ -15,10 +15,14 @@ import {
     closePortal,
 } from 'features/backdropPortal/backdropPortalSlice';
 import { AddMembers } from './AddMembers';
+import { useOutsideClick } from 'customHooks';
 
 export const NewGroupChat = () => {
+    const componentRef = useRef(null);
     const dispatch = useAppDispatch();
     const { currentStep } = useAppSelector(state => state.stepper);
+
+    useOutsideClick(componentRef);
 
     useEffect(() => {
         dispatch(resetSteps());
@@ -26,6 +30,7 @@ export const NewGroupChat = () => {
 
     return (
         <FramerMotionAnimation
+            ref={componentRef}
             animationVariant={animationTypes.insideOut}
             animationDuration={0.3}
             componentClasses={classes['framer-animation']}

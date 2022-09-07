@@ -71,7 +71,7 @@ export const AllChats = () => {
                 <IconButton
                     icon={<IoMdMenu />}
                     onClick={() => {
-                        dispatch(addChild(<SideMenu />));
+                        dispatch(addChild('SideMenu'));
                         dispatch(openPortal());
                     }}
                 />

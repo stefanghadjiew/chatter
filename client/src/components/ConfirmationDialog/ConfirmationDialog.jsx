@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 import { FlexContainer } from 'containers';
 import {
     Paragraph,
@@ -9,19 +9,33 @@ import {
 import { AnimatePresence } from 'framer-motion';
 import classes from './styles.module.scss';
 import { useAppSelector } from 'app/hooks';
+import { DIALOG_TYPES } from 'components';
+import { useOutsideClick } from 'customHooks';
 
-export const ConfirmationDialog = () => {
-    const { isOpen, title, confirmation, onConfirm, onClose } =
-        useAppSelector(state => state.confirmationDialog);
+export const ConfirmationDialog = ({
+    onConfirm: { onDelete, onBlock },
+    onClose,
+}) => {
+    const confirmationDialogRef = useRef(null);
+    useOutsideClick(confirmationDialogRef, () => {
+        onClose();
+    });
+
+    const { isOpen, title, confirmation, type } = useAppSelector(
+        state => state.confirmationDialog
+    );
+
+    if (!Object.values(DIALOG_TYPES).includes(type)) return;
 
     return (
         <Fragment>
             <AnimatePresence>
                 {isOpen && (
                     <FramerMotionAnimation
+                        ref={confirmationDialogRef}
                         motionKey="confirmation-dialog-animation"
-                        animationVariant={animationTypes.insideOut}
                         animationDuration={0.2}
+                        animationVariant={animationTypes.insideOut}
                         componentClasses={classes['height-auto']}
                     >
                         <FlexContainer
@@ -45,7 +59,11 @@ export const ConfirmationDialog = () => {
                                 <Button
                                     text="Confirm"
                                     size="small"
-                                    onClick={onConfirm}
+                                    onClick={
+                                        type === DIALOG_TYPES.delete
+                                            ? onDelete
+                                            : onBlock
+                                    }
                                     componentClasses={
                                         classes[
                                             'confirmation-dialog__actions__confirm-btn'

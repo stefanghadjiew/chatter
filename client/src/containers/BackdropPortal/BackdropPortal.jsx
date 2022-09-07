@@ -1,15 +1,48 @@
 import ReactDOM from 'react-dom';
+
 import classes from './styles.module.scss';
 import { usePortal } from 'customHooks';
-import { ClickAwayListener } from './ClickAwayListener';
+
 import { AnimatePresence } from 'framer-motion';
 import { useAppSelector } from 'app/hooks';
+
+//COMPONENTS BEING RENDERED BY THE PORTAL
+import { SideMenu } from 'views/Chat/AllChats/SideMenu';
+import { AddMembers } from 'views/Chat/NewGroupChat/AddMembers';
+import { NewGroupChat } from 'views/Chat/NewGroupChat';
+import { UserInfo } from 'views/Chat/CurrentChat/Message/UserInfo';
 
 export const BackdropPortal = () => {
     const [loaded, portalId] = usePortal('backdrop', 2);
     const { isOpen, childComponent } = useAppSelector(
         state => state.backdropPortal
     );
+
+    const COMPONENTS_IN_STORE = [
+        'SideMenu',
+        'AddMembers',
+        'NewGroupChat',
+        'UserInfo',
+    ];
+
+    const COMPONENTS = [
+        {
+            SideMenu: <SideMenu />,
+        },
+        {
+            AddMembers: <AddMembers />,
+        },
+        {
+            NewGroupChat: <NewGroupChat />,
+        },
+        {
+            UserInfo: <UserInfo />,
+        },
+    ];
+
+    let ComponentToRender = COMPONENTS_IN_STORE.includes(childComponent)
+        ? COMPONENTS.filter(c => c[childComponent])[0][childComponent]
+        : null;
 
     return loaded
         ? ReactDOM.createPortal(
@@ -18,9 +51,7 @@ export const BackdropPortal = () => {
               <AnimatePresence>
                   {isOpen && (
                       <div className={classes['backdrop']}>
-                          <ClickAwayListener>
-                              {childComponent}
-                          </ClickAwayListener>
+                          {ComponentToRender}
                       </div>
                   )}
               </AnimatePresence>,

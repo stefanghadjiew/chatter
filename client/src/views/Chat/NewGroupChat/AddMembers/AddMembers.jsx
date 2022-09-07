@@ -16,9 +16,11 @@ import { useInput, useScrollToBottom } from 'customHooks';
 import { filterUserFriends } from 'utils';
 import { AddedMember } from './AddedMember';
 import { AnimatePresence } from 'framer-motion';
+import { useOutsideClick } from 'customHooks';
 
 export const AddMembers = () => {
     const dispatch = useAppDispatch();
+    const componentRef = useRef(null);
     const listItemRefs = useRef([]);
     const { value: filterValue, handleChange: handleFilterChange } =
         useInput('');
@@ -30,6 +32,8 @@ export const AddMembers = () => {
     const [pageEndRef] = useScrollToBottom({
         childrenOfElement: usersToBeAddedToChannel,
     });
+
+    useOutsideClick(componentRef);
 
     const handleAddUsersToChannel = user => {
         if (usersToBeAddedToChannel.includes(user)) {
@@ -223,6 +227,7 @@ export const AddMembers = () => {
 
     return (
         <FlexContainer
+            ref={componentRef}
             flexDirection="column"
             componentClasses={classes['add-members-container']}
         >

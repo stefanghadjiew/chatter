@@ -5,8 +5,6 @@ const initialState = {
     phone: '+359 884703361',
     firstName: 'Stefan',
     lastName: 'Hadzhiev',
-    onConfirm: null,
-    onClose: null,
 };
 
 const editUserFriendSlice = createSlice({
@@ -16,6 +14,7 @@ const editUserFriendSlice = createSlice({
         toggleEditUserDialog(state) {
             state.isOpen = !state.isOpen;
         },
+
         prepopulatePhone(state, action) {
             state.phone = action.payload;
         },
@@ -25,12 +24,6 @@ const editUserFriendSlice = createSlice({
         prepopulateLastName(state, action) {
             state.lastName = action.payload;
         },
-        addOnConfirmEditContactHandler(state, action) {
-            state.onConfirm = action.payload;
-        },
-        addOnCloseEditContactHandler(state, action) {
-            state.onClose = action.payload;
-        },
     },
 });
 
@@ -39,8 +32,6 @@ export const {
     prepopulatePhone,
     prepopulateFirstName,
     prepopulateLastName,
-    addOnConfirmEditContactHandler,
-    addOnCloseEditContactHandler,
 } = editUserFriendSlice.actions;
 
 export default editUserFriendSlice.reducer;
