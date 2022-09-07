@@ -43,13 +43,13 @@ import {
 } from 'features/backdropPortal/backdropPortalSlice';
 import { KebabMenu } from './KebabMenu';
 import { useOutsideClick } from 'customHooks';
+import { userFriendsList } from './fakeData';
 
 export const UserInfo = () => {
     const componentAnimationRef = useRef(null);
     const componentRef = useRef(null);
     const confirmationDialogContainerRef = useRef(null);
-    const [isShareThisContactOpen, setIsShareThisContactOpen] =
-        useState(false);
+    const [isShareThisContactOpen, setIsShareThisContactOpen] = useState(false);
     const [isKebabMenuOpen, setIsKebabMenuOpen] = useState(false);
     const dispatch = useAppDispatch();
     useOutsideClick(componentAnimationRef);
@@ -174,9 +174,7 @@ export const UserInfo = () => {
             text: 'Block user',
             icon: (
                 <FaRegHandPaper
-                    className={
-                        classes['user-info__n-th-section--block-user']
-                    }
+                    className={classes['user-info__n-th-section--block-user']}
                 />
             ),
             onClick: handleBlockUserDialog,
@@ -219,153 +217,6 @@ export const UserInfo = () => {
         </FlexContainer>
     ));
 
-    const userFriendsList = [
-        {
-            name: 'Stefan',
-            lastName: 'Hadzhiev',
-            isOnline: true,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Hristo ',
-            lastName: 'Karamanliev',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Hristo',
-            lastName: 'Gergov',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'UniqueNameOne',
-            lastName: 'One',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'UniqueNameTwo',
-            lastName: 'Two',
-            isOnline: true,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'UniqueNameThree',
-            lastName: 'Three',
-            isOnline: true,
-            lastSeen: '',
-        },
-        {
-            name: 'UniqueNameFour',
-            lastName: 'Four',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Five',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Six',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Seven',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Eight',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Nine',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Ten',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Eleven',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Twelve',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Thirteen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Fourteen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Fifteen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Sixteen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Seventeen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Eighteen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Nineteen',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Twenty',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-        {
-            name: 'Test',
-            lastName: 'Twentyone',
-            isOnline: false,
-            lastSeen: 'last seen yesterday at 3:30 PM',
-        },
-    ];
-    //TODO: Add FramerMotionAnimation
     return (
         <FramerMotionAnimation
             ref={componentAnimationRef}
@@ -407,10 +258,7 @@ export const UserInfo = () => {
                             classes['flex-align-center'],
                         ]}
                     >
-                        <Avatar
-                            imgSrc={images.birdChat}
-                            size="extra-large"
-                        />
+                        <Avatar imgSrc={images.birdChat} size="extra-large" />
                         <FlexContainer
                             flexDirection="column"
                             componentClasses={classes['p-l-1']}
@@ -424,9 +272,7 @@ export const UserInfo = () => {
                             <Paragraph
                                 text="last seen today at 11:00 PM"
                                 componentClasses={
-                                    classes[
-                                        'user-info__header__user-last-seen'
-                                    ]
+                                    classes['user-info__header__user-last-seen']
                                 }
                             />
                         </FlexContainer>
@@ -449,9 +295,7 @@ export const UserInfo = () => {
                     </FlexContainer>
                     <FlexContainer
                         componentClasses={
-                            classes[
-                                'user-info__second-section__notifications'
-                            ]
+                            classes['user-info__second-section__notifications']
                         }
                     >
                         <IoMdNotificationsOutline />
@@ -460,9 +304,7 @@ export const UserInfo = () => {
                     </FlexContainer>
                     <FlexContainer
                         componentClasses={
-                            classes[
-                                'user-info__second-section__notifications'
-                            ]
+                            classes['user-info__second-section__notifications']
                         }
                     >
                         <Paragraph
@@ -490,17 +332,14 @@ export const UserInfo = () => {
                 <div
                     ref={confirmationDialogContainerRef}
                     className={
-                        classes[
-                            'user-info__confirmation-dialog__container'
-                        ]
+                        classes['user-info__confirmation-dialog__container']
                     }
                 >
                     <ConfirmationDialog
                         onConfirm={{
                             onDelete: () =>
                                 console.log('delete handler called'),
-                            onBlock: () =>
-                                console.log('block handler called'),
+                            onBlock: () => console.log('block handler called'),
                         }}
                         onClose={handleDialogClose}
                     />

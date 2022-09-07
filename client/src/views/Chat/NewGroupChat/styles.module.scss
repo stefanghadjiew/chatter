@@ -6,36 +6,4 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) !important;
-
-    .create-group-chat {
-        gap: 1rem;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        color: variables.$white;
-        background-color: variables.$primary;
-
-        &__input {
-            div {
-                margin: 0 0 0 1rem;
-            }
-
-            svg {
-                width: 70px;
-                height: 70px;
-                padding: 1rem;
-                border-radius: 50%;
-                background-color: variables.$darkPrimary;
-                cursor: pointer;
-                opacity: 0.9;
-                transition: opacity 0.2s ease-in-out;
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        }
-
-        &__actions {
-            gap: 1rem;
-        }
-    }
 }
