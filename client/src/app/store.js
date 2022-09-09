@@ -4,6 +4,7 @@ import backdropPortalReducer from '../features/backdropPortal/backdropPortalSlic
 import notificationSystemReducer from 'features/notificationSystem/notificationSystemSlice';
 import confirmationDialogReducer from 'features/confirmationDialog/confirmationDialog';
 import editUserSliceReducer from 'features/editUser/editUserSlice';
+import contextMenuSlice from 'features/contextMenu/contextMenuSlice';
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
         notificationSystem: notificationSystemReducer,
         confirmationDialog: confirmationDialogReducer,
         editUserDialog: editUserSliceReducer,
+        contextMenu: contextMenuSlice,
     },
 });

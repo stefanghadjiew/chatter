@@ -25,9 +25,7 @@ export const AddMembers = () => {
     const { value: filterValue, handleChange: handleFilterChange } =
         useInput('');
 
-    const [usersToBeAddedToChannel, setUsersToBeAddedToChannel] = useState(
-        []
-    );
+    const [usersToBeAddedToChannel, setUsersToBeAddedToChannel] = useState([]);
 
     const [pageEndRef] = useScrollToBottom({
         childrenOfElement: usersToBeAddedToChannel,
@@ -218,9 +216,7 @@ export const AddMembers = () => {
                 data={data}
                 listItemRefs={listItemRefs}
                 user={user}
-                handleRemoveUserFromAddedUsers={
-                    handleRemoveUserFromAddedUsers
-                }
+                handleRemoveUserFromAddedUsers={handleRemoveUserFromAddedUsers}
             />
         </FramerMotionAnimation>
     ));
@@ -233,14 +229,9 @@ export const AddMembers = () => {
         >
             <FlexContainer
                 alignItems="center"
-                componentClasses={
-                    classes['add-members-container__heading']
-                }
+                componentClasses={classes['add-members-container__heading']}
             >
-                <H4
-                    text="Add Members"
-                    componentClasses={classes['m-r-1']}
-                />
+                <H4 text="Add Members" componentClasses={classes['m-r-1']} />
                 <Paragraph
                     text={`${usersToBeAddedToChannel.length} / 200000`}
                 />
@@ -261,11 +252,7 @@ export const AddMembers = () => {
                     classes['p-b-tiny'],
                 ]}
             >
-                <ul
-                    className={
-                        classes['add-members-container__added-users']
-                    }
-                >
+                <ul className={classes['add-members-container__added-users']}>
                     <AnimatePresence>{usersToBeAdded}</AnimatePresence>
                     <div ref={pageEndRef} />
                 </ul>
@@ -278,9 +265,7 @@ export const AddMembers = () => {
 
             <FlexContainer
                 justifyContent="flex-end"
-                componentClasses={
-                    classes['add-members-container__actions']
-                }
+                componentClasses={classes['add-members-container__actions']}
             >
                 <Button
                     text="Cancel"

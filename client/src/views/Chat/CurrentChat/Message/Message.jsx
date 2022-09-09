@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { FlexContainer } from 'containers';
 import { Avatar, Paragraph } from 'components';
 import { images } from 'assets';
@@ -7,9 +8,11 @@ import {
     openPortal,
     addChild,
 } from 'features/backdropPortal/backdropPortalSlice';
-import { UserInfo } from './UserInfo';
+import { useContextMenu } from 'customHooks';
+import { CONTEXT_MENU_TYPES } from 'components/ContextMenu/contextMenuTypes';
 
 export const Message = ({
+    id,
     message,
     isFromUser,
     isLastMessage,
@@ -18,10 +21,19 @@ export const Message = ({
     //figure out how to show the Avatar when switching between current User typed message and recieved messages from friend, so that both user avatar and friend avatar are shown
 
     //needs to know information about message creator (either user or friend/friends)
+    const messageRef = useRef(null);
     const dispatch = useAppDispatch();
+
+    //The context menu needs to know wheather the current message that has been right clicked on is created from the user or a friend , so that it can render the 'Edit' option
+    useContextMenu(id, messageRef, CONTEXT_MENU_TYPES.MESSAGE, isFromUser, {
+        forMessage: true,
+        forChatChannel: false,
+    });
 
     return (
         <FlexContainer
+            id={id}
+            ref={messageRef}
             alignItems="center"
             componentClasses={classes['chat-messages__inner-container']}
         >
@@ -53,9 +65,7 @@ export const Message = ({
                 <Paragraph text={message} />
                 <Paragraph
                     text="4:11 PM"
-                    componentClasses={
-                        classes['chat-messages__message__time']
-                    }
+                    componentClasses={classes['chat-messages__message__time']}
                 />
             </FlexContainer>
         </FlexContainer>

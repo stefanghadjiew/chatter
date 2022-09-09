@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 import classes from './styles.module.scss';
 import { Input, IconButton } from 'components';
 import { useInput } from 'customHooks';
@@ -16,11 +16,13 @@ export const CurrentChat = () => {
         {
             isFromUser: false,
             message: 'Hello1',
+            id: 'message-id-1',
         },
         {
             isFromUser: false,
             message:
                 'Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes Hello1, kakvo stava pi4ovek kak sme dnes 12345667777asdwadsdadwad',
+            id: 'message-id-2',
         },
     ]);
 
@@ -42,6 +44,7 @@ export const CurrentChat = () => {
                                 {
                                     isFromUser: true,
                                     message: currentTypedMessage.value,
+                                    id: 'message-id-3',
                                 },
                                 ...prevMessages,
                             ]);

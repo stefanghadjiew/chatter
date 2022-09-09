@@ -1,9 +1,17 @@
+/* import { useEffect } from 'react'; */
+import { useRef } from 'react';
 import { Message } from '../Message';
 import classes from './styles.module.scss';
 import { useScrollToBottom } from 'customHooks';
 import { ScrollToBottomButton } from 'components';
+import { ContextMenu } from 'components';
+import { useAppSelector } from 'app/hooks';
 
 export const Messages = ({ messages }) => {
+    const {
+        isOpen: { forMessage },
+    } = useAppSelector(state => state.contextMenu);
+    const containerRef = useRef(null);
     const [pageEndRef] = useScrollToBottom({
         childrenOfElement: messages,
     });
@@ -13,6 +21,7 @@ export const Messages = ({ messages }) => {
 
     const renderMessages = messages.map((message, i) => (
         <Message
+            id={message.id}
             key={message.message + i}
             isFromUser={message.isFromUser}
             message={message.message}
@@ -22,10 +31,15 @@ export const Messages = ({ messages }) => {
     ));
 
     return (
-        <div id="chat-messages" className={classes['chat-messages']}>
+        <div
+            id="chat-messages"
+            className={classes['chat-messages']}
+            ref={containerRef}
+        >
             <div ref={pageEndRef} />
             {renderMessages}
             <ScrollToBottomButton id="chat-messages" />
+            <ContextMenu isOpen={forMessage} />
         </div>
     );
 };

@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BackdropPortal, NotificationSystem } from 'containers';
-
 import './index.module.scss';
 
 export const App = () => {

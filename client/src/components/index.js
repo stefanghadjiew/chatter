@@ -8,3 +8,4 @@ export * from './Avatar';
 export * from './IconButton';
 export * from './ScrollToBottomButton';
 export * from './ConfirmationDialog';
+export * from './ContextMenu';
