@@ -33,9 +33,7 @@ export const MessageToast = ({ type = 'info', description, id }) => {
             <div className={classes['content']}>
                 <H4 text={assignToastTitle} />
                 <Paragraph text={description} />
-                <button
-                    onClick={() => dispatch(removeMessageById({ id }))}
-                >
+                <button onClick={() => dispatch(removeMessageById({ id }))}>
                     X
                 </button>
             </div>

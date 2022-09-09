@@ -1,0 +1,47 @@
+@use '../../../../sassStyles/variables';
+@use '../../../../sassStyles/mixins';
+@use '../../../../sassStyles/utility.module';
+
+.chat {
+    display: block;
+
+    .channel-name {
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    p {
+        color: variables.$grey;
+        font-weight: normal;
+    }
+
+    .last-message {
+        color: variables.$darkgray;
+    }
+
+    .channel-name__container {
+        align-items: center;
+        svg {
+            color: variables.$white;
+            margin-right: 0.25rem;
+        }
+    }
+
+    &__channel {
+        @include mixins.flex-align-center;
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: variables.$darkPrimary;
+        }
+
+        &--selected {
+            background-color: variables.$darkPrimary;
+            &:hover {
+                background-color: variables.$darkPrimary;
+            }
+        }
+    }
+}

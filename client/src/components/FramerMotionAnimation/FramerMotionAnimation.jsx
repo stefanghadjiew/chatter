@@ -11,6 +11,7 @@ export const FramerMotionAnimation = forwardRef((props, ref) => {
         animationDuration,
         motionKey,
         componentClasses,
+        style,
     } = props;
 
     const animation = animationVariants(animationDuration).hasOwnProperty(
@@ -21,6 +22,7 @@ export const FramerMotionAnimation = forwardRef((props, ref) => {
 
     return (
         <motion.div
+            style={style}
             ref={ref}
             key={motionKey}
             className={[

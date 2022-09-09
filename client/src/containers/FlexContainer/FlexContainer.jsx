@@ -4,6 +4,7 @@ import { assignClasses } from 'utils';
 
 export const FlexContainer = forwardRef((props, ref) => {
     const {
+        id,
         children,
         componentClasses,
         justifyContent,
@@ -11,6 +12,7 @@ export const FlexContainer = forwardRef((props, ref) => {
         flexDirection,
         centered,
         onClick,
+        style,
     } = props;
     const CONTAINER_CLASSES = {
         justifyContent: [
@@ -33,9 +35,7 @@ export const FlexContainer = forwardRef((props, ref) => {
     )
         ? utilityClasses[`flex-justify-${justifyContent}`]
         : '';
-    const assignAlignItems = CONTAINER_CLASSES.alignItems.includes(
-        alignItems
-    )
+    const assignAlignItems = CONTAINER_CLASSES.alignItems.includes(alignItems)
         ? utilityClasses[`flex-align-${alignItems}`]
         : '';
     const assignFlexDirection = CONTAINER_CLASSES.flexDirection.includes(
@@ -49,8 +49,10 @@ export const FlexContainer = forwardRef((props, ref) => {
 
     return (
         <div
+            id={id}
             ref={ref}
             onClick={onClick}
+            style={style}
             className={[
                 assignClasses(componentClasses),
                 utilityClasses['flex'],

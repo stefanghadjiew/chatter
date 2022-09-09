@@ -104,10 +104,7 @@ export const SideMenu = () => {
                         imgSrc={images.birdChat}
                         componentClasses={classes['avatar']}
                     />
-                    <UserInfo
-                        userName="Cheffo0o"
-                        userPhone="+359 89928238"
-                    />
+                    <UserInfo userName="Cheffo0o" userPhone="+359 89928238" />
                 </FlexContainer>
                 <ul className={classes['side-menu__list']}>
                     {renderSideMenuItems}

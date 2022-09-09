@@ -40,9 +40,7 @@ export const ConfirmationDialog = ({
                     >
                         <FlexContainer
                             flexDirection="column"
-                            componentClasses={
-                                classes['confirmation-dialog']
-                            }
+                            componentClasses={classes['confirmation-dialog']}
                         >
                             <Paragraph text={title} />
                             <Paragraph text={confirmation} />

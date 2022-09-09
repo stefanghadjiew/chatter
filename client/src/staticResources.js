@@ -29,3 +29,21 @@ export const paragraphs = {
     rememberMe: 'Remember me ',
     joinWith: 'Or you can join with',
 };
+
+export const messageContextMenuItems = {
+    reply: 'Reply',
+    pin: 'Pin',
+    forward: 'Forward',
+    delete: 'Delete',
+    select: 'Select',
+    edit: 'Edit',
+};
+
+export const channelContextMenuItems = {
+    archive: 'Archive',
+    pin: 'Pin',
+    unmute: 'Unmute',
+    markAsUnread: 'Mark as unread',
+    clearHistory: 'Clear history',
+    deleteChat: 'Delete chat',
+};

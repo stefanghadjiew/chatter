@@ -3,6 +3,7 @@
 .chat-messages {
     &__inner-container {
         padding: 0.25rem 0 0.5rem 0.5rem;
+        /*  position: relative; */
     }
 
     &__inner-container:not(:first-child) {
@@ -47,6 +48,7 @@
             margin-left: auto;
             margin-top: -0.5rem;
             opacity: 0.4;
+            pointer-events: none;
         }
     }
 }

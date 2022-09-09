@@ -1,0 +1,31 @@
+@use '../../../sassStyles/utility.module';
+@use '../../../sassStyles/variables';
+
+.menu {
+    background-color: variables.$primary;
+    border-radius: 0.25rem;
+    min-width: 150px;
+    color: variables.$white;
+
+    &__item {
+        cursor: pointer;
+        align-items: center;
+        padding: 0.5rem 1rem;
+
+        &:first-child {
+            margin-top: 0.25rem;
+        }
+
+        &:hover {
+            background-color: variables.$darkPrimary;
+        }
+
+        svg {
+            margin-right: 1rem;
+        }
+
+        &:last-child {
+            margin-bottom: 0.25rem;
+        }
+    }
+}
