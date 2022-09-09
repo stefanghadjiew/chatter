@@ -10,16 +10,14 @@ import {
 } from 'features/backdropPortal/backdropPortalSlice';
 import { ChatChannel } from './ChatChannel';
 
-export const AllChats = () => {
+export const AllChats = ({ channels, setCurrentlySelectedChannel }) => {
     const {
         isOpen: { forChatChannel },
     } = useAppSelector(state => state.contextMenu);
-    const [selectedChatIndex, setSelectedChatIndex] = useState(null);
+    const [selectedChatIndex, setSelectedChatIndex] = useState(null); //this is used to apply the css styling for the selected channel
     const dispatch = useAppDispatch();
 
-    const data = ['Chat-channel-1', 'Chat-channel-2', 'Chat-channel-3'];
-
-    const renderChatChannels = data.map((item, index) => (
+    const renderChatChannels = channels.map((item, index) => (
         <ChatChannel
             id={`chat-channel__${index}`}
             chatName={item}
@@ -27,6 +25,7 @@ export const AllChats = () => {
             key={item + index}
             selectedChatIndex={selectedChatIndex}
             setSelectedChatIndex={setSelectedChatIndex}
+            setCurrentlySelectedChannel={setCurrentlySelectedChannel}
         />
     ));
 

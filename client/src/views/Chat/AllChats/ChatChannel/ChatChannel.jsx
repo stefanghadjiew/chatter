@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { FlexContainer } from 'containers';
 import { Paragraph, Avatar } from 'components';
-import { Link } from 'react-router-dom';
 import classes from './styles.module.scss';
 import { images } from 'assets';
 import { MdPeopleAlt } from 'react-icons/md'; // -> if the chat is a channel
@@ -14,6 +13,7 @@ export const ChatChannel = ({
     chatIndex,
     selectedChatIndex,
     setSelectedChatIndex,
+    setCurrentlySelectedChannel,
 }) => {
     const chatRef = useRef(null);
 
@@ -23,7 +23,12 @@ export const ChatChannel = ({
     });
 
     return (
-        <Link to="#" className={classes['chat']} ref={chatRef} id={id}>
+        <div
+            className={classes['chat']}
+            ref={chatRef}
+            id={id}
+            onClick={() => setCurrentlySelectedChannel(chatName)}
+        >
             <li
                 className={[
                     classes['chat__channel'],
@@ -57,6 +62,6 @@ export const ChatChannel = ({
                     />
                 </FlexContainer>
             </li>
-        </Link>
+        </div>
     );
 };
