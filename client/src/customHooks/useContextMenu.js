@@ -26,7 +26,7 @@ export const useContextMenu = (
             dispatch(setAnchorPoint({ x: e.layerX + 2, y: e.layerY - 180 }));
             dispatch(toggleContextMenu(isOpen));
         },
-        [dispatch, menuType, isFromUser]
+        [dispatch, menuType, isFromUser, isOpen]
     );
 
     useEffect(() => {

@@ -41,4 +41,18 @@
             }
         }
     }
+
+    &__no-chat-selected {
+        pointer-events: none;
+        color: variables.$white;
+        display: inline;
+        padding: 0.25rem 0.5rem;
+        border-radius: 2rem;
+        background-color: variables.$primary;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+    }
 }
