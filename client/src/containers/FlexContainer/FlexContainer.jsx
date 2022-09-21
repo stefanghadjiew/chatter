@@ -30,6 +30,8 @@ export const FlexContainer = forwardRef((props, ref) => {
         centered: ['flex-center'],
     };
 
+    /* const assignClassIfPresent = (containerClass, userProvidedContainerProp) => CONTAINER_CLASSES[containerClass].includes(userProvidedContainerProp) ?  */
+
     const assignJustifyContent = CONTAINER_CLASSES.justifyContent.includes(
         justifyContent
     )
@@ -58,7 +60,6 @@ export const FlexContainer = forwardRef((props, ref) => {
                 utilityClasses['flex'],
                 assignFlexDirection,
                 assignAlignItems,
-                /* assignFlexColumn, */
                 assignCentered,
                 assignJustifyContent,
             ].join(' ')}
