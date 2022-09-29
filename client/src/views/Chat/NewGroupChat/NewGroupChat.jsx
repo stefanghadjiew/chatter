@@ -4,7 +4,7 @@ import classes from './styles.module.scss';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { resetSteps } from 'features/stepper/stepperSlice';
 import { AddMembers } from './AddMembers';
-import { CreateGroupChat } from './CreateGroupChat';
+import { CreateChat } from '../common/CreateChat';
 import { useOutsideClick } from 'customHooks';
 
 export const NewGroupChat = () => {
@@ -26,7 +26,7 @@ export const NewGroupChat = () => {
             componentClasses={classes['framer-animation']}
             motionKey="new-group-chat-animation"
         >
-            {currentStep === 0 && <CreateGroupChat />}
+            {currentStep === 0 && <CreateChat />}
 
             {currentStep === 1 && <AddMembers />}
         </FramerMotionAnimation>

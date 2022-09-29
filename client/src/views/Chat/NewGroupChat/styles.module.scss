@@ -1,9 +1,6 @@
 @use '../../../sassStyles/variables';
+@use '../../../sassStyles/mixins';
 .framer-animation {
-    width: auto;
     height: auto;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) !important;
+    @include mixins.centered-in-backdrop-portal;
 }

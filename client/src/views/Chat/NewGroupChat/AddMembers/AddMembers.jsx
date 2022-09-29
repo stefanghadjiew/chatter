@@ -12,11 +12,10 @@ import { useAppDispatch } from 'app/hooks';
 import { decrementStep } from 'features/stepper/stepperSlice';
 import classes from './styles.module.scss';
 import { List } from 'views/Chat/List';
-import { useInput, useScrollToBottom } from 'customHooks';
+import { useInput, useScrollToBottom, useOutsideClick } from 'customHooks';
 import { filterUserFriends } from 'utils';
 import { AddedMember } from './AddedMember';
 import { AnimatePresence } from 'framer-motion';
-import { useOutsideClick } from 'customHooks';
 
 export const AddMembers = () => {
     const dispatch = useAppDispatch();

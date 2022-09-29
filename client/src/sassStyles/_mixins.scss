@@ -25,6 +25,13 @@
     opacity: 0.6;
 }
 
+@mixin centered-in-backdrop-portal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+}
+
 //this should be a utility class -> just testing to see how to use mixins
 @mixin full-container-height {
     height: 100%;
