@@ -1,16 +1,16 @@
 import ReactDOM from 'react-dom';
-
 import classes from './styles.module.scss';
 import { usePortal } from 'customHooks';
-
 import { AnimatePresence } from 'framer-motion';
 import { useAppSelector } from 'app/hooks';
 
 //COMPONENTS BEING RENDERED BY THE PORTAL
+import { FramerMotionAnimation, animationTypes } from 'components';
 import { SideMenu } from 'views/Chat/AllChats/SideMenu';
 import { AddMembers } from 'views/Chat/NewGroupChat/AddMembers';
 import { NewGroupChat } from 'views/Chat/NewGroupChat';
 import { UserInfo } from 'views/Chat/CurrentChat/Message/UserInfo';
+import { CreateChat } from 'views/Chat/common/CreateChat';
 
 export const BackdropPortal = () => {
     const [loaded, portalId] = usePortal('backdrop', 2);
@@ -23,6 +23,7 @@ export const BackdropPortal = () => {
         'AddMembers',
         'NewGroupChat',
         'UserInfo',
+        'NewChannel',
     ];
 
     const COMPONENTS = [
@@ -37,6 +38,17 @@ export const BackdropPortal = () => {
         },
         {
             UserInfo: <UserInfo />,
+        },
+        {
+            NewChannel: (
+                <FramerMotionAnimation
+                    animationVariant={animationTypes.insideOut}
+                    animationDuration={0.2}
+                    componentClasses={classes['framer-animation']}
+                >
+                    <CreateChat isForNewChannel={true} />
+                </FramerMotionAnimation>
+            ),
         },
     ];
 

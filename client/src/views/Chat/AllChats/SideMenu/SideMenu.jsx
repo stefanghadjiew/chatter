@@ -41,6 +41,9 @@ export const SideMenu = () => {
                 title: 'New Channel',
                 icon: <MdChatBubble />,
                 bgClass: 'new-channel',
+                onClick: () => {
+                    dispatch(addChild('NewChannel'));
+                },
             },
             {
                 title: 'Contacts',

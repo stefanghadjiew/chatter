@@ -9,8 +9,16 @@ import {
 import { incrementStep } from 'features/stepper/stepperSlice';
 import { AiFillCamera } from 'react-icons/ai';
 
-export const CreateGroupChat = () => {
+export const CreateChat = ({ isForNewChannel }) => {
     const dispatch = useAppDispatch();
+
+    const handleConfirmation = isForNewChannel
+        ? () => {
+              console.log('Create channel clicked');
+          }
+        : () => {
+              dispatch(incrementStep());
+          };
 
     return (
         <FlexContainer
@@ -23,9 +31,8 @@ export const CreateGroupChat = () => {
             >
                 <AiFillCamera />
                 <Input
-                    placeholder="Group chat"
-                    removeLabel={true}
-                    removeOutline={true}
+                    variant="outlined"
+                    label={isForNewChannel ? 'Channel name' : 'Group chat'}
                 />
             </FlexContainer>
             <FlexContainer
@@ -42,8 +49,8 @@ export const CreateGroupChat = () => {
                     }}
                 />
                 <Button
-                    onClick={() => dispatch(incrementStep())}
-                    text="Next"
+                    onClick={handleConfirmation}
+                    text={isForNewChannel ? 'Create' : 'Next'}
                     size="small"
                     color="dark-primary"
                 />
