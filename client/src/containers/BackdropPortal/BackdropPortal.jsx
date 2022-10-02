@@ -24,6 +24,7 @@ export const BackdropPortal = () => {
         'NewGroupChat',
         'UserInfo',
         'NewChannel',
+        'Contacts',
     ];
 
     const COMPONENTS = [
@@ -47,6 +48,17 @@ export const BackdropPortal = () => {
                     componentClasses={classes['framer-animation']}
                 >
                     <CreateChat isForNewChannel={true} />
+                </FramerMotionAnimation>
+            ),
+        },
+        {
+            Contacts: (
+                <FramerMotionAnimation
+                    animationVariant={animationTypes.insideOut}
+                    animationDuration={0.2}
+                    componentClasses={classes['framer-animation']}
+                >
+                    <AddMembers isContacts={true} />
                 </FramerMotionAnimation>
             ),
         },

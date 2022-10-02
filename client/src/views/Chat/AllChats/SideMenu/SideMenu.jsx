@@ -49,6 +49,9 @@ export const SideMenu = () => {
                 title: 'Contacts',
                 icon: <MdPermContactCalendar />,
                 bgClass: 'contacts',
+                onClick: () => {
+                    dispatch(addChild('Contacts'));
+                },
             },
             {
                 title: 'Calls',

@@ -8,6 +8,52 @@
     background-color: variables.$primary;
     min-width: 360px;
 
+    &--is-contacts {
+        color: variables.$white;
+        background-color: variables.$primary;
+        min-width: 360px;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+
+        p {
+            color: variables.$darkgray;
+        }
+
+        .search-input {
+            input {
+                padding: 0;
+            }
+
+            label {
+                padding: 0;
+                top: 14px;
+            }
+
+            &:focus-within {
+                border-bottom: 2px solid variables.$darkPrimary;
+            }
+
+            &:focus-within label,
+            input:not(:placeholder-shown) ~ label {
+                padding: 0;
+                top: -14px;
+                left: 0;
+                bottom: auto;
+            }
+
+            padding: 0;
+
+            & ~ label {
+                padding: 0.5rem 0;
+            }
+        }
+
+        &__actions {
+            padding-top: 1rem;
+            justify-content: space-between;
+        }
+    }
+
     &__heading {
         margin-bottom: 1rem;
     }

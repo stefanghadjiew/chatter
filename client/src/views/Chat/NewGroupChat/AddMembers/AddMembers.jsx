@@ -10,6 +10,7 @@ import {
 } from 'components';
 import { useAppDispatch } from 'app/hooks';
 import { decrementStep } from 'features/stepper/stepperSlice';
+import { closePortal } from 'features/backdropPortal/backdropPortalSlice';
 import classes from './styles.module.scss';
 import { List } from 'views/Chat/List';
 import { useInput, useScrollToBottom, useOutsideClick } from 'customHooks';
@@ -17,7 +18,12 @@ import { filterUserFriends } from 'utils';
 import { AddedMember } from './AddedMember';
 import { AnimatePresence } from 'framer-motion';
 
-export const AddMembers = () => {
+//TO BE REMOVED
+import { userFriends } from './dummyData';
+
+export const AddMembers = ({ isContacts }) => {
+    //TODO: Moove this to the common folder
+
     const dispatch = useAppDispatch();
     const componentRef = useRef(null);
     const listItemRefs = useRef([]);
@@ -48,156 +54,7 @@ export const AddMembers = () => {
         ]);
     };
 
-    const data = useMemo(() => {
-        return [
-            {
-                name: 'Stefan',
-                lastName: 'Hadzhiev',
-                isOnline: true,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Hristo ',
-                lastName: 'Karamanliev',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Hristo',
-                lastName: 'Gergov',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'UniqueNameOne',
-                lastName: 'One',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'UniqueNameTwo',
-                lastName: 'Two',
-                isOnline: true,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'UniqueNameThree',
-                lastName: 'Three',
-                isOnline: true,
-                lastSeen: '',
-            },
-            {
-                name: 'UniqueNameFour',
-                lastName: 'Four',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Five',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Six',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Seven',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Eight',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Nine',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Ten',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Eleven',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Twelve',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Thirteen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Fourteen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Fifteen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Sixteen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Seventeen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Eighteen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Nineteen',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Twenty',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-            {
-                name: 'Test',
-                lastName: 'Twentyone',
-                isOnline: false,
-                lastSeen: 'last seen yesterday at 3:30 PM',
-            },
-        ];
-    }, []); // doing this for now just not to re-calculate the whole data array on every input change -> later this data will come from the server
-
-    //add a class for handleAddUsersToChannel for each list item in the List component
+    const data = useMemo(() => userFriends, []); // doing this for now just not to re-calculate the whole data array on every input change -> later this data will come from the server
 
     //TODO: REMEMBER THAT THE FRAMERMOTIONANIMATION COMPONENT NEEDS TO BE A DIRECT CHILD OF ANIMATEPRESENCE
     //TODO: IN ORDER FOR THE EXIT ANIMATIONS TO WORK !!!
@@ -224,16 +81,25 @@ export const AddMembers = () => {
         <FlexContainer
             ref={componentRef}
             flexDirection="column"
-            componentClasses={classes['add-members-container']}
+            componentClasses={
+                isContacts
+                    ? classes['add-members-container--is-contacts']
+                    : classes['add-members-container']
+            }
         >
             <FlexContainer
                 alignItems="center"
                 componentClasses={classes['add-members-container__heading']}
             >
-                <H4 text="Add Members" componentClasses={classes['m-r-1']} />
-                <Paragraph
-                    text={`${usersToBeAddedToChannel.length} / 200000`}
+                <H4
+                    text={isContacts ? 'Contacts' : 'Add Members'}
+                    componentClasses={classes['m-r-1']}
                 />
+                {!isContacts && (
+                    <Paragraph
+                        text={`${usersToBeAddedToChannel.length} / 200000`}
+                    />
+                )}
             </FlexContainer>
             <Input
                 value={filterValue}
@@ -264,17 +130,25 @@ export const AddMembers = () => {
 
             <FlexContainer
                 justifyContent="flex-end"
-                componentClasses={classes['add-members-container__actions']}
+                componentClasses={
+                    isContacts
+                        ? classes['add-members-container--is-contacts__actions']
+                        : classes['add-members-container__actions']
+                }
             >
                 <Button
-                    text="Cancel"
+                    text={isContacts ? 'Add Contact' : 'Cancel'}
                     onClick={() => dispatch(decrementStep())}
                     size="small"
                     color="dark-primary"
                 />
                 <Button
-                    text="Create"
-                    onClick={() => dispatch(decrementStep())}
+                    text={isContacts ? 'Close' : 'Create'}
+                    onClick={
+                        isContacts
+                            ? () => dispatch(closePortal())
+                            : () => dispatch(decrementStep())
+                    }
                     size="small"
                     color="dark-primary"
                 />
