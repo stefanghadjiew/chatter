@@ -10,7 +10,10 @@ import {
 } from 'components';
 import { useAppDispatch } from 'app/hooks';
 import { decrementStep } from 'features/stepper/stepperSlice';
-import { closePortal } from 'features/backdropPortal/backdropPortalSlice';
+import {
+    addChild,
+    closePortal,
+} from 'features/backdropPortal/backdropPortalSlice';
 import classes from './styles.module.scss';
 import { List } from 'views/Chat/List';
 import { useInput, useScrollToBottom, useOutsideClick } from 'customHooks';
@@ -138,7 +141,11 @@ export const AddMembers = ({ isContacts }) => {
             >
                 <Button
                     text={isContacts ? 'Add Contact' : 'Cancel'}
-                    onClick={() => dispatch(decrementStep())}
+                    onClick={
+                        isContacts
+                            ? () => dispatch(addChild('NewContact'))
+                            : () => dispatch(decrementStep())
+                    }
                     size="small"
                     color="dark-primary"
                 />
