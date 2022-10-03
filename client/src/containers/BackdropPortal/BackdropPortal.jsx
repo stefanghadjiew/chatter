@@ -11,6 +11,7 @@ import { AddMembers } from 'views/Chat/NewGroupChat/AddMembers';
 import { NewGroupChat } from 'views/Chat/NewGroupChat';
 import { UserInfo } from 'views/Chat/CurrentChat/Message/UserInfo';
 import { CreateChat } from 'views/Chat/common/CreateChat';
+import { NewContact } from 'views/Chat/NewContact';
 
 export const BackdropPortal = () => {
     const [loaded, portalId] = usePortal('backdrop', 2);
@@ -25,6 +26,7 @@ export const BackdropPortal = () => {
         'UserInfo',
         'NewChannel',
         'Contacts',
+        'NewContact',
     ];
 
     const COMPONENTS = [
@@ -61,6 +63,9 @@ export const BackdropPortal = () => {
                     <AddMembers isContacts={true} />
                 </FramerMotionAnimation>
             ),
+        },
+        {
+            NewContact: <NewContact />,
         },
     ];
 
