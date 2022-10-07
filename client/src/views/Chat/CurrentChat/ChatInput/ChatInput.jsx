@@ -23,7 +23,6 @@ export const ChatInput = () => {
                         }
                     }} */
             placeholder={labels.writeAmessage}
-            removeLabel={true}
             removeValidation={true}
             value={currentTypedMessage.value}
             onChange={currentTypedMessage.handleChange}

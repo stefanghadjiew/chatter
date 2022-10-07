@@ -11,15 +11,11 @@ import {
 } from 'components';
 import { Link } from 'react-router-dom';
 import classes from './styles.module.scss';
-import { useInput } from 'customHooks';
 import { loginMsg } from 'staticResources';
 import { images } from 'assets';
 import { siteMap } from 'Router';
 
 export const Login = () => {
-    const email = useInput('');
-    const password = useInput('');
-
     return (
         <Page title="Chatter">
             <FlexContainer componentClasses={classes['m-t-3']}>
@@ -44,9 +40,7 @@ export const Login = () => {
                     <Fragment>
                         <FramerMotionAnimation
                             animationVariant={animationTypes.bottomToTop}
-                            componentClasses={
-                                classes['framer-animation-h1']
-                            }
+                            componentClasses={classes['framer-animation-h1']}
                         >
                             <H1
                                 text="Welcome Back :)"
@@ -56,26 +50,18 @@ export const Login = () => {
                         </FramerMotionAnimation>
                         <Form componentClasses={classes['m-t-2']}>
                             <FramerMotionAnimation
-                                animationVariant={
-                                    animationTypes.bottomToTop
-                                }
+                                animationVariant={animationTypes.bottomToTop}
                                 animationDuration={0.5}
                             >
                                 <Input
                                     type="email"
                                     label="Email"
-                                    value={email.value}
-                                    success={email.success}
-                                    error={email.error}
-                                    onChange={email.handleChange}
+                                    initialValue=""
                                 />
                                 <Input
                                     type="password"
                                     label="Password"
-                                    value={password.value}
-                                    error={password.error}
-                                    success={password.success}
-                                    onChange={password.handleChange}
+                                    initialValue=""
                                 />
                                 <FlexContainer
                                     justifyContent="space-between"
@@ -96,9 +82,7 @@ export const Login = () => {
                                     <Link to="/">
                                         <Button
                                             text="Login"
-                                            componentClasses={
-                                                classes['m-r-2']
-                                            }
+                                            componentClasses={classes['m-r-2']}
                                         />
                                     </Link>
                                     <Link to={siteMap.Signup.path}>
@@ -107,9 +91,7 @@ export const Login = () => {
                                 </FlexContainer>
                             </FramerMotionAnimation>
                             <FramerMotionAnimation
-                                animationVariant={
-                                    animationTypes.bottomToTop
-                                }
+                                animationVariant={animationTypes.bottomToTop}
                                 animationDuration={1.2}
                             >
                                 <Paragraph
