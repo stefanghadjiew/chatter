@@ -1,25 +1,23 @@
 import classes from './styles.module.scss';
 import { InputError } from './InputError/InputError';
 import { assignClasses } from 'utils';
+import { useInput } from 'customHooks';
 
 export const Input = ({
-    value,
+    initialValue,
     label,
     placeholder,
-    onChange,
     type = 'text',
     variant = 'filled',
-    error,
-    success,
     removeValidation,
-    removeLabel = false,
     componentClasses,
     componentInputClasses,
     onKeyDown,
-    removeBorder,
     removeOutline,
 }) => {
     //create logic for removing focus-within
+
+    const { value, error, success, handleChange } = useInput(initialValue);
 
     const INPUT_VARIANTS = ['filled', 'outlined'];
 
@@ -45,9 +43,6 @@ export const Input = ({
               ]
             : '';
 
-    const assignRemoveBorder = removeBorder
-        ? classes['input-wrapper--outlined--remove-border']
-        : '';
     const assignRemoveOutline = removeOutline
         ? classes['input-wrapper--filled--remove-outline']
         : '';
@@ -59,25 +54,22 @@ export const Input = ({
                 assignVariant,
                 assignErrorClasses,
                 assignSuccessClasses,
-                assignRemoveBorder,
                 assignRemoveOutline,
                 assignClasses(componentClasses),
             ].join(' ')}
         >
             <input
-                className={[assignClasses(componentInputClasses)].join(
-                    ' '
-                )}
-                placeholder={removeLabel ? placeholder : ' '}
+                className={[assignClasses(componentInputClasses)].join(' ')}
+                placeholder={!label ? placeholder : ' '}
                 value={value}
-                onChange={onChange}
+                onChange={handleChange}
                 name="name"
                 type={type}
                 autoComplete="off"
                 onKeyDown={onKeyDown}
             />
 
-            {!removeLabel && <label htmlFor="name">{label}</label>}
+            {label && <label htmlFor="name">{label}</label>}
             <InputError
                 error={error}
                 success={success}

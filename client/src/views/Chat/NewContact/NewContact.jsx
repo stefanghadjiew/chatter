@@ -16,10 +16,6 @@ import { closePortal } from 'features/backdropPortal/backdropPortalSlice';
 
 export const NewContact = () => {
     const componentRef = useRef(null);
-    //Trying out the ref pattern
-    const firstNameRef = useRef('');
-    const lastNameRef = useRef('');
-    const phoneNumberRef = useRef('+359');
     const dispatch = useAppDispatch();
 
     useOutsideClick(componentRef);
@@ -47,6 +43,7 @@ export const NewContact = () => {
                         <Input
                             variant="outlined"
                             label="First name"
+                            initialValue=""
                             componentClasses={classes['first-name']}
                         />
                     </FlexContainer>
@@ -54,6 +51,7 @@ export const NewContact = () => {
                         <Input
                             variant="outlined"
                             label="Last name"
+                            initialValue=""
                             componentClasses={classes['first-name']}
                         />
                     </FlexContainer>
@@ -64,6 +62,7 @@ export const NewContact = () => {
                         <Input
                             variant="outlined"
                             label="Phone number"
+                            initialValue=""
                             componentClasses={classes['first-name']}
                         />
                     </FlexContainer>

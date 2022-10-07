@@ -9,7 +9,6 @@ import {
     FramerMotionAnimation,
     animationTypes,
 } from 'components';
-import { useInput } from 'customHooks';
 import { Form, Page, FlexContainer } from 'containers';
 import { Link } from 'react-router-dom';
 import { BsFillChatRightTextFill } from 'react-icons/bs';
@@ -19,12 +18,6 @@ import { buttons, labels, paragraphs } from 'staticResources';
 import { siteMap } from 'Router';
 
 export const Signup = () => {
-    const firstName = useInput('');
-    const lastName = useInput('');
-    const nickname = useInput('');
-    const email = useInput('');
-    const password = useInput('');
-
     return (
         <Page title="Chatter">
             <FlexContainer componentClasses={classes['m-t-1']}>
@@ -54,16 +47,12 @@ export const Signup = () => {
                             <Input
                                 type="text"
                                 label={labels.firstName}
-                                value={firstName.value}
-                                error={firstName.error}
-                                onChange={firstName.handleChange}
+                                initialValue=""
                             />
                             <Input
                                 type="text"
                                 label={labels.lastName}
-                                value={lastName.value}
-                                error={lastName.error}
-                                onChange={lastName.handleChange}
+                                initialValue=""
                             />
                         </FlexContainer>
                     </FramerMotionAnimation>
@@ -75,25 +64,17 @@ export const Signup = () => {
                         <Input
                             type="text"
                             label={labels.nickname}
-                            value={nickname.value}
-                            error={nickname.error}
-                            onChange={nickname.handleChange}
+                            initialValue=""
                         />
                         <Input
                             type="email"
                             label={labels.email}
-                            value={email.value}
-                            success={email.success}
-                            error={email.error}
-                            onChange={email.handleChange}
+                            initialValue=""
                         />
                         <Input
                             type="password"
                             label={labels.password}
-                            value={password.value}
-                            error={password.error}
-                            success={password.success}
-                            onChange={password.handleChange}
+                            initialValue=""
                         />
                     </FramerMotionAnimation>
                     <FramerMotionAnimation

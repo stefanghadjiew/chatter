@@ -44,8 +44,8 @@ export const AllChats = ({ channels, setCurrentlySelectedChannel }) => {
                 />
                 <Input
                     type="text"
-                    removeLabel={true}
                     placeholder="Search"
+                    removeValidation={true}
                     removeOutline={true}
                     componentClasses={classes['search']}
                 />
